@@ -8,7 +8,8 @@ export default function CardMenuDesplegable({
   amount,
   id,
 }) {
-  const { handlerRemoveCard } = useContext(StoreContext);
+  const { handlerRemoveCard, handlerSumaAmount, handlerRestaAmount } =
+    useContext(StoreContext);
   return (
     <section className="w-full h-[200px] flex  mt-8 border-b border-x-gray-500 gap-4">
       <img src={image} alt="imagen" className="max-w-[80px] max-h-[100px] " />
@@ -17,9 +18,15 @@ export default function CardMenuDesplegable({
           <span className=" w-[200px] font-semibold block">{title}</span>
           <div className="flex  items-center gap-8">
             <div className=" flex  items-center gap-6 py-1 px-3 border border-gray-400">
-              <IoMdRemove className="cursor-pointer" />
+              <IoMdRemove
+                className="cursor-pointer"
+                onClick={() => handlerRestaAmount(id)}
+              />
               <span>{amount ? amount : 1}</span>
-              <IoMdAdd className="cursor-pointer" />
+              <IoMdAdd
+                className="cursor-pointer"
+                onClick={() => handlerSumaAmount(id)}
+              />
             </div>
             <div className="flex justify-between w-full items-center ">
               <span>{price}</span>

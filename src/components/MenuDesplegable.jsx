@@ -15,18 +15,19 @@ export default function MenuDesplegable() {
         <MdArrowForward size={30} onClick={handlerMenu} />
       </div>
       <div>
-        {card.map((c) => {
-          return (
-            <CardMenuDesplegable
-              key={c.id}
-              image={c.image}
-              title={c.title}
-              id={c.id}
-              amount={c.amount}
-              price={c.price}
-            />
-          );
-        })}
+        {card &&
+          card.map((c) => {
+            return (
+              <CardMenuDesplegable
+                key={c.id}
+                image={c.image}
+                title={c.title}
+                id={c.id}
+                amount={c.amount}
+                price={c.price}
+              />
+            );
+          })}
       </div>
     </section>
   );

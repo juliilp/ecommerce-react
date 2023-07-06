@@ -46,6 +46,28 @@ export default function ContextProvider({ children }) {
     });
     setCard(removeCard);
   };
+
+  const handlerSumaAmount = (id) => {
+    // encuentro la card
+    const findCard = card.find((c) => c.id === id);
+    handlerAgregarCard(findCard, id);
+  };
+  const handlerRestaAmount = (id) => {
+    const findCard = card.find((c) => c.id === id);
+    if (findCard) {
+      const newCard = card.map((item) => {
+        if (item.id === id) {
+          return { ...item, amount: findCard.amount - 1 };
+        } else {
+          return item;
+        }
+      });
+      setCard(newCard);
+    }
+    if (findCard.amount < 2) {
+      handlerRemoveCard(id);
+    }
+  };
   return (
     <StoreContext.Provider
       value={{
@@ -58,6 +80,8 @@ export default function ContextProvider({ children }) {
         card,
         setCard,
         handlerRemoveCard,
+        handlerSumaAmount,
+        handlerRestaAmount,
       }}
     >
       {children}
