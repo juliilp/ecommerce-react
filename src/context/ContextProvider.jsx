@@ -6,9 +6,24 @@ export default function ContextProvider({ children }) {
   const [allProduct, setAllProduct] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [card, setCard] = useState([]);
+  const [acumulador, setAcumulador] = useState(0);
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     setAllProduct(fakestoreapi);
   }, []);
+
+  useEffect(() => {
+    if (card) {
+      const amount = card.reduce((acc, cardActual) => {
+        return acc + cardActual.amount;
+      }, 0);
+      setAcumulador(amount);
+    }
+    const totalReduce = card.reduce((acc, currentCard) => {
+      return acc + currentCard.price * currentCard.amount;
+    }, 0);
+    setTotal(totalReduce);
+  }, [card]);
 
   // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra
   const handlerMenu = () => {
@@ -82,6 +97,8 @@ export default function ContextProvider({ children }) {
         handlerRemoveCard,
         handlerSumaAmount,
         handlerRestaAmount,
+        acumulador,
+        total,
       }}
     >
       {children}
