@@ -41,7 +41,6 @@ export default function ContextProvider({ children }) {
   console.log(card);
 
   const handlerRemoveCard = (id) => {
-    console.log("remove item" + id);
     const removeCard = card.filter((c) => {
       return c.id !== id;
     });
