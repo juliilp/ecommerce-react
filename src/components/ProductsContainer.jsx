@@ -15,6 +15,7 @@ export default function ProductsContainer() {
             category={producto.category}
             id={producto.id}
             key={key}
+            producto={producto}
           />
         );
       })}
