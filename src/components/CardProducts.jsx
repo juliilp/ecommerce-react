@@ -28,6 +28,7 @@ export default function CardProducts({
           <BsPlus
             size={30}
             color="white"
+            className="cursor-pointer"
             onClick={() => handlerAgregarCard(producto, id)}
           />
           <Link to={`product/${id}`}>

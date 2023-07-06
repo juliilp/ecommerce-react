@@ -39,6 +39,14 @@ export default function ContextProvider({ children }) {
     }
   };
   console.log(card);
+
+  const handlerRemoveCard = (id) => {
+    console.log("remove item" + id);
+    const removeCard = card.filter((c) => {
+      return c.id !== id;
+    });
+    setCard(removeCard);
+  };
   return (
     <StoreContext.Provider
       value={{
@@ -50,6 +58,7 @@ export default function ContextProvider({ children }) {
         handlerAgregarCard,
         card,
         setCard,
+        handlerRemoveCard,
       }}
     >
       {children}
