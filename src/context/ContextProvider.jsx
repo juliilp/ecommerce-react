@@ -99,7 +99,6 @@ export default function ContextProvider({ children }) {
       handlerRemoveCard(id);
     }
   };
-  console.log("card favoritas" + cardFavoritas);
   return (
     <StoreContext.Provider
       value={{

@@ -6,10 +6,11 @@ import { FaBars } from "react-icons/fa";
 import { HiShoppingBag } from "react-icons/hi";
 import { Link } from "react-router-dom";
 export default function Navbar() {
-  const { allProduct, setAllProductRender } = useContext(StoreContext);
+  const { allProduct, setAllProductRender, allProductRender } =
+    useContext(StoreContext);
   const [inputSearch, setInputSearch] = useState("");
   const [open, setOpen] = useState(false);
-
+  const [categorias, setCategorias] = useState("");
   const handlerMenu = () => setOpen((prev) => !prev);
   const handlerInputSearch = (e) => {
     setInputSearch(e.target.value);
@@ -28,6 +29,18 @@ export default function Navbar() {
   const uniqueCategories = [
     ...new Set(allProduct.map((product) => product.category)),
   ];
+
+  const filtroCategorias = (e) => {
+    if (e.target.value === "all") {
+      console.log(allProduct);
+      return setAllProductRender(allProduct);
+    }
+    const ProductFilter = allProduct.filter(
+      (product) => product.category === e.target.value
+    );
+    setAllProductRender(ProductFilter);
+  };
+
   return (
     <header className="w-full bg-slate-500 fixed top-0 z-20 h-[7vh] md:h-[12vh] md:static">
       <div className="relative w-full flex justify-center items-center h-full gap-6 flex-col">
@@ -42,10 +55,13 @@ export default function Navbar() {
         </div>
 
         <div className="w-full h-[7vh] items-center md:items-stretch flex justify-around  gap-1 px-6">
-          <select className="hidden md:block h-max">
+          <select className="hidden md:block h-max" onChange={filtroCategorias}>
             <option>Categorias</option>
+            <option value="all">Mostrar todas</option>
             {uniqueCategories.map((producto, index) => (
-              <option key={index}>{producto}</option>
+              <option key={index} value={producto}>
+                {producto}
+              </option>
             ))}
           </select>
           <Link to="/sobre-nosotros">
