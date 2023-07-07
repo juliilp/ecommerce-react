@@ -10,10 +10,26 @@ export default function ContextProvider({ children }) {
   const [card, setCard] = useState([]);
   const [acumulador, setAcumulador] = useState(0);
   const [total, setTotal] = useState(0);
-
+  const [borradoLogico, setBorradoLogico] = useState(true);
+  const [refresh, setRefresh] = useState("");
+  const [switcherBorradoLogico, setSwitcherBorradoLogico] = useState("");
   useEffect(() => {
-    setAllProduct(fakestoreapi);
-    setAllProductRender(fakestoreapi);
+    const array = [];
+    fakestoreapi.map((e) => {
+      const algo = {
+        id: e.id,
+        title: e.title,
+        category: e.category,
+        description: e.description,
+        image: e.image,
+        price: e.price,
+        rating: e.rating,
+        visible: localStorage.getItem(e.title) || true,
+      };
+      array.push(algo);
+    });
+    setAllProduct(array);
+    setAllProductRender(array);
   }, []);
 
   useEffect(() => {
@@ -29,6 +45,22 @@ export default function ContextProvider({ children }) {
     setTotal(totalReduce);
   }, [card]);
 
+  const handlerBorradoLogico = (id) => {
+    const findProduct = allProductRender.find((c) => c.id === id);
+    findProduct.visible === true
+      ? (findProduct.visible = false)
+      : (findProduct.visible = true);
+    const valor = localStorage.getItem(findProduct.title);
+    if (valor === "false") {
+      localStorage.setItem(findProduct.title, "true");
+      setRefresh("dasd");
+    }
+    if (valor === "true") {
+      localStorage.setItem(findProduct.title, "false");
+      setRefresh("dasdsd");
+    }
+    console.log(valor);
+  };
   const handlerCardAddFavoritas = (id) => {
     const cardFound = allProduct.find((item) => item.id === id);
     if (!cardFavoritas.includes(cardFound)) {
@@ -119,6 +151,10 @@ export default function ContextProvider({ children }) {
         setCardFavoritas,
         handlerCardAddFavoritas,
         handlerCardRemoveFavoritas,
+        handlerBorradoLogico,
+        setBorradoLogico,
+        borradoLogico,
+        switcherBorradoLogico,
       }}
     >
       {children}

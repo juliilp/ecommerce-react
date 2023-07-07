@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { StoreContext } from "../context/ContextProvider";
+import { Link } from "react-router-dom";
 export default function MainHome() {
   const { handlerMenu, acumulador, allProduct, setAllProductRender } =
     useContext(StoreContext);
@@ -11,6 +12,7 @@ export default function MainHome() {
   };
   return (
     <main>
+      <Link to="/dashboard">Dashboard</Link>
       <button onClick={handlerMenu}>Abrir y cerrar menu {acumulador}</button>
       <input type="range" max={999} min={0} onChange={handlerInputRange} />
       <span>Price:{inputPrice}</span>

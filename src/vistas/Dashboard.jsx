@@ -1,5 +1,11 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { StoreContext } from "../context/ContextProvider";
+import { Link } from "react-router-dom";
+
 export default function Dashboard() {
+  const { allProductRender, handlerBorradoLogico, switcherBorradoLogico } =
+    useContext(StoreContext);
   const [steps, setSteps] = useState(1);
   const [error, setError] = useState("");
   const [user, setUser] = useState({
@@ -55,8 +61,28 @@ export default function Dashboard() {
         </section>
       )}
       {steps === 2 && (
-        <section>
-          <h1>Acá va a estar el borrado lógico</h1>
+        <section className="flex justify-center items-center flex-col gap-2">
+          <Link to="/">Home</Link>
+          {allProductRender.map((c) => {
+            if (!localStorage.getItem(c.title)) {
+              localStorage.setItem(c.title, c.visible);
+            }
+            const valor = localStorage.getItem(c.title);
+            return (
+              <div
+                key={c.id}
+                className="w-[350px] h-[350px] border border-gray-500 flex justify-center items-center flex-col "
+              >
+                <img src={c.image} alt="Imagen" className="w-[160px]" />
+                <h2>{c.title}</h2>
+                <button onClick={() => handlerBorradoLogico(c.id)}>
+                  {valor === "true"
+                    ? "Click para deshabilitar"
+                    : "Click para habilitar"}
+                </button>
+              </div>
+            );
+          })}
           <button onClick={handlerDeslogear}>Deslogear</button>
         </section>
       )}

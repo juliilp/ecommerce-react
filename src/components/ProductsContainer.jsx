@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import CardProducts from "./CardProducts";
 export default function ProductsContainer() {
   const { allProductRender } = useContext(StoreContext);
+  const render = [];
+
+  allProductRender.map((p) => p.visible === true && render.push(p));
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:justify-self-center">
-      {allProductRender.map((producto, key) => {
+      {render.map((producto, key) => {
         return (
           <CardProducts
             image={producto.image}
