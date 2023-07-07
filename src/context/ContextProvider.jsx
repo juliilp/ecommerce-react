@@ -4,11 +4,13 @@ export const StoreContext = createContext();
 
 export default function ContextProvider({ children }) {
   const [allProduct, setAllProduct] = useState([]);
+  const [allProductRender, setAllProductRender] = useState([]);
+  const [cardFavoritas, setCardFavoritas] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [card, setCard] = useState([]);
   const [acumulador, setAcumulador] = useState(0);
   const [total, setTotal] = useState(0);
-  const [allProductRender, setAllProductRender] = useState([]);
+
   useEffect(() => {
     setAllProduct(fakestoreapi);
     setAllProductRender(fakestoreapi);
@@ -27,10 +29,24 @@ export default function ContextProvider({ children }) {
     setTotal(totalReduce);
   }, [card]);
 
-  // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra
-  const handlerMenu = () => {
-    setOpenMenu((val) => !val);
+  const handlerCardAddFavoritas = (id) => {
+    const cardFound = allProduct.find((item) => item.id === id);
+    if (!cardFavoritas.includes(cardFound)) {
+      setCardFavoritas([...cardFavoritas, cardFound]);
+    }
+    console.log(cardFavoritas);
   };
+  const handlerCardRemoveFavoritas = (id) => {
+    const cardFound = allProduct.find((c) => c.id === id);
+    console.log(cardFound);
+    const cardRemove = cardFavoritas.filter((c) => {
+      return c.id !== id;
+    });
+    setCardFavoritas(cardRemove);
+    console.log(cardFavoritas);
+  };
+  // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra
+  const handlerMenu = () => setOpenMenu((val) => !val);
 
   const handlerAgregarCard = (product, id) => {
     const newItem = { ...product, amount: 1 };
@@ -55,8 +71,6 @@ export default function ContextProvider({ children }) {
       setCard([...card, newItem]);
     }
   };
-  console.log(card);
-
   const handlerRemoveCard = (id) => {
     const removeCard = card.filter((c) => {
       return c.id !== id;
@@ -85,6 +99,7 @@ export default function ContextProvider({ children }) {
       handlerRemoveCard(id);
     }
   };
+  console.log("card favoritas" + cardFavoritas);
   return (
     <StoreContext.Provider
       value={{
@@ -103,6 +118,10 @@ export default function ContextProvider({ children }) {
         total,
         allProductRender,
         setAllProductRender,
+        cardFavoritas,
+        setCardFavoritas,
+        handlerCardAddFavoritas,
+        handlerCardRemoveFavoritas,
       }}
     >
       {children}

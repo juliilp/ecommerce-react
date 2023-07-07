@@ -10,7 +10,12 @@ export default function CardProducts({
   title,
   producto,
 }) {
-  const { handlerAgregarCard } = useContext(StoreContext);
+  const {
+    handlerAgregarCard,
+    handlerCardAddFavoritas,
+    handlerCardRemoveFavoritas,
+    cardFavoritas,
+  } = useContext(StoreContext);
   return (
     <section
       className="w-full h-full flex flex-col justify-center items-center mb-8"
@@ -36,6 +41,13 @@ export default function CardProducts({
               <BsFillEyeFill size={15} color="black" />
             </div>
           </Link>
+          {cardFavoritas.includes(producto) ? (
+            <button onClick={() => handlerCardRemoveFavoritas(id)}>
+              Remove
+            </button>
+          ) : (
+            <button onClick={() => handlerCardAddFavoritas(id)}>Add</button>
+          )}
         </div>
       </div>
       <div className=" w-[300px] h-[150px] ">

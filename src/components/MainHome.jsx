@@ -9,7 +9,6 @@ export default function MainHome() {
     const filterCard = allProduct.filter((c) => c.price > inputPrice);
     setAllProductRender(filterCard);
   };
-  console.log(allProduct);
   return (
     <main>
       <button onClick={handlerMenu}>Abrir y cerrar menu {acumulador}</button>
