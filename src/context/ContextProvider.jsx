@@ -34,7 +34,6 @@ export default function ContextProvider({ children }) {
     if (!cardFavoritas.includes(cardFound)) {
       setCardFavoritas([...cardFavoritas, cardFound]);
     }
-    console.log(cardFavoritas);
   };
   const handlerCardRemoveFavoritas = (id) => {
     const cardFound = allProduct.find((c) => c.id === id);
@@ -43,7 +42,6 @@ export default function ContextProvider({ children }) {
       return c.id !== id;
     });
     setCardFavoritas(cardRemove);
-    console.log(cardFavoritas);
   };
   // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra
   const handlerMenu = () => setOpenMenu((val) => !val);
