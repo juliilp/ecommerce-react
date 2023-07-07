@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { BsPlus } from "react-icons/bs";
 import { AiTwotoneHeart, AiOutlineHeart } from "react-icons/ai";
-export default function CardProducts({
+export default function CardProductFavorita({
   image,
   id,
   category,
@@ -38,15 +38,10 @@ export default function CardProducts({
             className="cursor-pointer"
             onClick={() => handlerAgregarCard(producto, id)}
           />
-          {cardFavoritas.includes(producto) ? (
-            <button onClick={() => handlerCardRemoveFavoritas(id)}>
-              <AiTwotoneHeart color="white" />
-            </button>
-          ) : (
-            <button onClick={() => handlerCardAddFavoritas(id)}>
-              <AiOutlineHeart color="white" />
-            </button>
-          )}
+
+          <button onClick={() => handlerCardRemoveFavoritas(id)}>
+            <AiTwotoneHeart color="white" />
+          </button>
         </div>
       </div>
       <div className=" w-[300px] h-[150px] ">
