@@ -65,7 +65,7 @@ export default function Dashboard() {
           <Link to="/">Home</Link>
           {allProductRender.map((c) => {
             if (!localStorage.getItem(c.title)) {
-              localStorage.setItem(c.title, c.visible);
+              localStorage.setItem(c.title, true);
             }
             const valor = localStorage.getItem(c.title);
             return (
