@@ -53,11 +53,12 @@ export default function ContextProvider({ children }) {
     const valor = localStorage.getItem(findProduct.title);
     if (valor === "false") {
       localStorage.setItem(findProduct.title, "true");
-      setRefresh("dasd");
-    }
-    if (valor === "true") {
+      // Si no tiene refresh, no me renderiza los cambios, y pongo un math random por que si es determinado dato en el siguiente onclick no lo va a renderizar por ser el mismo
+      // dato, entonces eso me lleva a tener que hacer 3 click para mostrar el renderizado
+      setRefresh(Math.random);
+    } else {
       localStorage.setItem(findProduct.title, "false");
-      setRefresh("dasdsd");
+      setRefresh(Math.random);
     }
     console.log(valor);
   };
