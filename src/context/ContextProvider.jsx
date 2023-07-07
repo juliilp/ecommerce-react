@@ -8,8 +8,10 @@ export default function ContextProvider({ children }) {
   const [card, setCard] = useState([]);
   const [acumulador, setAcumulador] = useState(0);
   const [total, setTotal] = useState(0);
+  const [allProductRender, setAllProductRender] = useState([]);
   useEffect(() => {
     setAllProduct(fakestoreapi);
+    setAllProductRender(fakestoreapi);
   }, []);
 
   useEffect(() => {
@@ -99,6 +101,8 @@ export default function ContextProvider({ children }) {
         handlerRestaAmount,
         acumulador,
         total,
+        allProductRender,
+        setAllProductRender,
       }}
     >
       {children}

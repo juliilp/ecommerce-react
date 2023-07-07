@@ -13,10 +13,10 @@ export default function CardProducts({
   const { handlerAgregarCard } = useContext(StoreContext);
   return (
     <section
-      className="w-full h-full flex flex-col justify-center items-center "
+      className="w-full h-full flex flex-col justify-center items-center mb-8"
       key={id}
     >
-      <div className="  h-[300px] w-[350px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative overflow-hidden transition group ">
+      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative overflow-hidden transition group ">
         <Link to={`product/${id}`}>
           <img
             src={image}
@@ -38,7 +38,7 @@ export default function CardProducts({
           </Link>
         </div>
       </div>
-      <div className=" w-[350px]">
+      <div className=" w-[300px] h-[150px] ">
         <p>{category}</p>
         <Link to={`product/${id}`}>
           <h2 className="font-bold">{title}</h2>
