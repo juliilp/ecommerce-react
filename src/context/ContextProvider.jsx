@@ -96,14 +96,16 @@ export default function ContextProvider({ children }) {
   const handlerMenu = () => setOpenMenu((val) => !val);
 
   const handlerAgregarCard = (product, id) => {
-    console.log("12");
     const newItem = { ...product, amount: 1 };
     const cardItem = card.find((item) => item.id === id);
 
     if (cardItem) {
       const newCart = card.map((item) => {
         if (item.id === id) {
-          return { ...item, amount: cardItem.amount + 1 };
+          return {
+            ...item,
+            amount: cardItem.amount + 1,
+          };
         } else {
           return item;
         }
@@ -111,11 +113,10 @@ export default function ContextProvider({ children }) {
       setCard(newCart);
       localStorage.setItem("agregarcard", JSON.stringify(newCart));
     } else {
-      const newCart = [...card, newItem];
+      const newCart = [...card, { ...newItem }];
       setCard(newCart);
       localStorage.setItem("agregarcard", JSON.stringify(newCart));
     }
-
     toast("Agregado al carrito!");
   };
   const handlerRemoveCard = (id) => {
