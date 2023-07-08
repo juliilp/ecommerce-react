@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       <MenuDesplegable />
       <MainHome />
-      {/* <ProductsContainer /> */}
+      <ProductsContainer />
     </main>
   );
 }
