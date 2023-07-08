@@ -13,7 +13,6 @@ export default function MainHome() {
   return (
     <main>
       <Link to="/dashboard">Dashboard</Link>
-      <button onClick={handlerMenu}>Abrir y cerrar menu</button>
       <input type="range" max={999} min={0} onChange={handlerInputRange} />
       <span>Price:{inputPrice}</span>
     </main>
