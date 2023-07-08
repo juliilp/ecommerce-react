@@ -3,12 +3,19 @@ import { StoreContext } from "../context/ContextProvider";
 import { MdArrowForward } from "react-icons/md";
 import CardMenuDesplegable from "./CardMenuDesplegable";
 export default function MenuDesplegable() {
-  const { openMenu, handlerMenu, card, acumulador, total, setCard } =
-    useContext(StoreContext);
+  const {
+    openMenu,
+    handlerMenu,
+    card,
+    acumulador,
+    total,
+    setCard,
+    setOpenMenu,
+  } = useContext(StoreContext);
 
   useEffect(() => {
     if (card.length === 0) {
-      handlerMenu();
+      setOpenMenu(false);
     }
   }, [card]);
 
