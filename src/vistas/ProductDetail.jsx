@@ -5,18 +5,23 @@ import axios from "axios";
 import { IoMdAdd, IoMdRemove } from "react-icons/Io";
 import { FaTruck, FaMotorcycle } from "react-icons/fa";
 export default function ProductDetail() {
-  const { handlerRestaAmount, handlerSumaAmount } = useContext(StoreContext);
+  const {
+    handlerRestaAmount,
+    handlerSumaAmount,
+    allProductRender,
+    handlerRestaAmountDetail,
+  } = useContext(StoreContext);
   const { id } = useParams();
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState(allProductRender);
 
   useEffect(() => {
-    const TraerDetail = async () => {
-      const { data } = await axios(`https://fakestoreapi.com/products/${id}`);
-      setProduct(data);
-    };
-    TraerDetail();
-  }, []);
-  console.log(product);
+    const detail = allProductRender.find((c) => c.id == id);
+    setProduct(detail);
+  }, [allProductRender]);
+
+  useEffect(() => {
+    console.log(product);
+  }, [product]);
   return (
     <section className="flex w-full flex-col md:flex-row justify-center items-center ">
       {product ? (
@@ -31,11 +36,11 @@ export default function ProductDetail() {
               </span>
               <span>Suggested payments with 6 months special financing</span>
             </div>
-            <div className=" flex gap-6">
+            {/* <div className=" flex gap-6">
               <div className="flex w-max items-center gap-6 py-1 px-3 border border-gray-400">
                 <IoMdRemove
                   className="cursor-pointer"
-                  onClick={() => handlerRestaAmount(id)}
+                  onClick={() => handlerRestaAmountDetail(id)}
                 />
                 <span>{product.amount ? product.amount : 1}</span>
                 <IoMdAdd
@@ -47,7 +52,7 @@ export default function ProductDetail() {
                 <span>Only 12 item left!</span>
                 <span>Don't miss it</span>
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-4">
               <button>Buy Now</button>
               <button>Add to Cart</button>
