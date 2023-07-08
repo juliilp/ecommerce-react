@@ -6,11 +6,10 @@ import { FaBars } from "react-icons/fa";
 import { HiShoppingBag } from "react-icons/hi";
 import { Link } from "react-router-dom";
 export default function Navbar() {
-  const { allProduct, setAllProductRender, allProductRender } =
+  const { allProduct, setAllProductRender, acumulador } =
     useContext(StoreContext);
   const [inputSearch, setInputSearch] = useState("");
   const [open, setOpen] = useState(false);
-  const [categorias, setCategorias] = useState("");
   const handlerMenu = () => setOpen((prev) => !prev);
   const handlerInputSearch = (e) => {
     setInputSearch(e.target.value);
@@ -79,7 +78,12 @@ export default function Navbar() {
             className="outline-none pl-4 py-1 max-w-[900px] h-max w-[250px] "
           />
 
-          <HiShoppingBag size={30} className="hidden md:block" />
+          <div className="flex relative">
+            <HiShoppingBag size={30} className="hidden md:block" />
+            <span className="absolute top-0 right-0 text-lg font-semibold z-20 text-white">
+              {acumulador}
+            </span>
+          </div>
           {/*----------------------------------------------- Esto es mobile -------------------------------------------------*/}
           <FaBars
             className="cursor-pointer block md:hidden"
