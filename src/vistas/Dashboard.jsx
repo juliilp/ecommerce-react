@@ -71,6 +71,7 @@ export default function Dashboard() {
       {steps === 2 && (
         <section className="flex justify-center items-center flex-col gap-2">
           <Link to="/">Home</Link>
+          <button onClick={handlerDeslogear}>Deslogear</button>
           {allProductRender.map((c) => {
             if (!localStorage.getItem(c.title)) {
               localStorage.setItem(c.title, true);
@@ -91,7 +92,6 @@ export default function Dashboard() {
               </div>
             );
           })}
-          <button onClick={handlerDeslogear}>Deslogear</button>
         </section>
       )}
     </>
