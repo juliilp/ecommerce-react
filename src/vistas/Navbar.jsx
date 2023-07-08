@@ -6,11 +6,11 @@ import { FaBars } from "react-icons/fa";
 import { HiShoppingBag } from "react-icons/hi";
 import { Link } from "react-router-dom";
 export default function Navbar() {
-  const { allProduct, setAllProductRender, acumulador } =
+  const { allProduct, setAllProductRender, acumulador, handlerMenu } =
     useContext(StoreContext);
   const [inputSearch, setInputSearch] = useState("");
   const [open, setOpen] = useState(false);
-  const handlerMenu = () => setOpen((prev) => !prev);
+  const handlerMenuMobile = () => setOpen((prev) => !prev);
   const handlerInputSearch = (e) => {
     setInputSearch(e.target.value);
     if (e.key === "Enter") {
@@ -29,17 +29,13 @@ export default function Navbar() {
     ...new Set(allProduct.map((product) => product.category)),
   ];
 
-  const filtroCategorias = (e) => {
-    if (e.target.value === "all") {
-      console.log(allProduct);
-      return setAllProductRender(allProduct);
-    }
-    const ProductFilter = allProduct.filter(
-      (product) => product.category === e.target.value
-    );
-    setAllProductRender(ProductFilter);
-  };
-
+  // men's clothing
+  // jewelery
+  // electronics
+  // women's clothing
+  // const filterCategories = allProduct.filter(
+  //   (producto) => producto.category === "men's clothing"
+  // );
   return (
     <header className="w-full bg-slate-500 fixed top-0 z-20 h-[7vh] md:h-[12vh] md:static">
       <div className="relative w-full flex justify-center items-center h-full gap-6 flex-col">
@@ -54,15 +50,6 @@ export default function Navbar() {
         </div>
 
         <div className="w-full h-[7vh] items-center md:items-stretch flex justify-around  gap-1 px-6">
-          <select className="hidden md:block h-max" onChange={filtroCategorias}>
-            <option>Categorias</option>
-            <option value="all">Mostrar todas</option>
-            {uniqueCategories.map((producto, index) => (
-              <option key={index} value={producto}>
-                {producto}
-              </option>
-            ))}
-          </select>
           <Link to="/sobre-nosotros">
             <span className="hidden md:block cursor-pointer ">
               Sobre Nosotros
@@ -79,8 +66,12 @@ export default function Navbar() {
           />
 
           <div className="flex relative">
-            <HiShoppingBag size={30} className="hidden md:block" />
-            <span className="absolute top-0 right-0 text-lg font-semibold z-20 text-white">
+            <HiShoppingBag
+              size={30}
+              className="hidden md:block cursor-pointer"
+              onClick={handlerMenu}
+            />
+            <span className=" hidden md:block absolute top-0 right-0 text-lg font-semibold z-20 text-white">
               {acumulador}
             </span>
           </div>
@@ -88,7 +79,7 @@ export default function Navbar() {
           <FaBars
             className="cursor-pointer block md:hidden"
             size={25}
-            onClick={handlerMenu}
+            onClick={handlerMenuMobile}
           />
 
           {/* Esto es el menu desplegable mobile */}
@@ -98,7 +89,7 @@ export default function Navbar() {
             } duration-300 transition-all top-full absolute w-[250px] border border-gray-500 flex flex-col gap-2 items-center justify-center z-40 bg-white h-[100px] md:hidden`}
           >
             <span
-              onClick={handlerMenu}
+              onClick={handlerMenuMobile}
               className="cursor-pointer w-6 h-6 text-white bg-red-500  text-center absolute right-0 top-0 "
             >
               X
