@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { BsPlus } from "react-icons/bs";
 import { AiTwotoneHeart, AiOutlineHeart } from "react-icons/ai";
+import { Toaster } from "react-hot-toast";
 export default function CardProductFavorita({
   image,
   id,

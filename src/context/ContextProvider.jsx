@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { fakestoreapi } from "../fakestoreapi/fakestoreapi";
+import { toast } from "react-hot-toast";
 export const StoreContext = createContext();
 
 export default function ContextProvider({ children }) {
@@ -30,6 +31,7 @@ export default function ContextProvider({ children }) {
         price: e.price,
         rating: e.rating,
         visible: localStorage.getItem(e.title) || true,
+        stock: 10,
       };
       array.push(algo);
     });
@@ -68,6 +70,7 @@ export default function ContextProvider({ children }) {
     console.log(valor);
   };
   const handlerCardAddFavoritas = (id) => {
+    console.log(allProduct);
     const cardFound = allProduct.find((item) => item.id === id);
     if (!cardFavoritas.includes(cardFound)) {
       setCardFavoritas([...cardFavoritas, cardFound]);
@@ -76,8 +79,10 @@ export default function ContextProvider({ children }) {
         JSON.stringify([...cardFavoritas, cardFound])
       );
     }
+    toast("Agregado a favoritos!");
   };
   const handlerCardRemoveFavoritas = (id) => {
+    toast("Sacado de favoritos!");
     const cardFound = allProduct.find((c) => c.id === id);
     console.log(cardFound);
     const cardRemove = cardFavoritas.filter((c) => c.id !== id);
@@ -85,11 +90,13 @@ export default function ContextProvider({ children }) {
     const updatedCardFavoritas = cardFavoritas.filter((c) => c.id !== id);
     localStorage.setItem("cardFavoritas", JSON.stringify(updatedCardFavoritas));
     setCardFavoritas(cardRemove);
+    console.log("remove");
   };
   // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra
   const handlerMenu = () => setOpenMenu((val) => !val);
 
   const handlerAgregarCard = (product, id) => {
+    console.log("12");
     const newItem = { ...product, amount: 1 };
     const cardItem = card.find((item) => item.id === id);
 
@@ -101,7 +108,6 @@ export default function ContextProvider({ children }) {
           return item;
         }
       });
-
       setCard(newCart);
       localStorage.setItem("agregarcard", JSON.stringify(newCart));
     } else {
@@ -109,6 +115,8 @@ export default function ContextProvider({ children }) {
       setCard(newCart);
       localStorage.setItem("agregarcard", JSON.stringify(newCart));
     }
+
+    toast("Agregado al carrito!");
   };
   const handlerRemoveCard = (id) => {
     const removeCard = card.filter((c) => {

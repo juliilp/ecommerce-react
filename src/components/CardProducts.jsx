@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { BsPlus } from "react-icons/bs";
+import { Toaster } from "react-hot-toast";
 import { AiTwotoneHeart, AiOutlineHeart } from "react-icons/ai";
 export default function CardProducts({
   image,
@@ -16,6 +17,7 @@ export default function CardProducts({
     handlerCardAddFavoritas,
     handlerCardRemoveFavoritas,
     cardFavoritas,
+    allProduct,
   } = useContext(StoreContext);
   return (
     <section
@@ -26,7 +28,7 @@ export default function CardProducts({
         <Link to={`product/${id}`}>
           <img
             src={image}
-            className="max-h-[160px] group-hover:scale-125 duration-300 "
+            className="max-h-[160px] g  roup-hover:scale-125 duration-300 "
             alt="imagen"
           />
         </Link>
@@ -56,6 +58,29 @@ export default function CardProducts({
         </Link>
         <span>{price}</span>
       </div>
+      <Toaster
+        position="top-left"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "black",
+            },
+          },
+        }}
+      />
     </section>
   );
 }

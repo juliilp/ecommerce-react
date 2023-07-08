@@ -5,10 +5,8 @@ import { Link } from "react-router-dom";
 import CardProductFavorita from "../components/CardProductFavorita";
 export default function Favoritas() {
   const { cardFavoritas } = useContext(StoreContext);
-
-  console.log(localStorage.getItem("cardsFavoritas"));
   return (
-    <div>
+    <section>
       {cardFavoritas.length > 0 ? (
         cardFavoritas.map((card, key) => (
           <CardProductFavorita
@@ -27,6 +25,6 @@ export default function Favoritas() {
       <Link to="/">
         <p>Ir al home</p>
       </Link>
-    </div>
+    </section>
   );
 }
