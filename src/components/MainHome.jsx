@@ -2,19 +2,10 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
 export default function MainHome() {
-  const { handlerMenu, allProduct, setAllProductRender } =
-    useContext(StoreContext);
-  const [inputPrice, setInputPrice] = useState(0);
-  const handlerInputRange = (e) => {
-    setInputPrice(e.target.value);
-    const filterCard = allProduct.filter((c) => c.price > inputPrice);
-    setAllProductRender(filterCard);
-  };
+  // const { handlerMenu } = useContext(StoreContext);
   return (
-    <main>
-      <Link to="/dashboard">Dashboard</Link>
-      <input type="range" max={999} min={0} onChange={handlerInputRange} />
-      <span>Price:{inputPrice}</span>
+    <main className="w-full px-16">
+      <Link to="/dashboard">Dashboar</Link>
     </main>
   );
 }
