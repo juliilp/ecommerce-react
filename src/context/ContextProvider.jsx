@@ -55,8 +55,8 @@ export default function ContextProvider({ children }) {
   const handlerBorradoLogico = (id) => {
     const findProduct = allProductRender.find((c) => c.id === id);
     findProduct.visible === true
-      ? (findProduct.visible = false)
-      : (findProduct.visible = true);
+      ? (findProduct.visible = "false")
+      : (findProduct.visible = "true");
     const valor = localStorage.getItem(findProduct.title);
     if (valor === "false") {
       localStorage.setItem(findProduct.title, "true");
