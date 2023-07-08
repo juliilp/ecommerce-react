@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
@@ -19,12 +19,19 @@ export default function Dashboard() {
     });
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("userAdmin")) {
+      setSteps(2);
+    }
+  }, []);
+
   const handlerSubmit = (e) => {
     e.preventDefault();
     console.log(user);
     if (user.nombre === "admin" && user.contraseña === "admin") {
       setError("");
       setSteps(2);
+      localStorage.setItem("userAdmin", 2);
     } else {
       setError("Datos incorrectos");
     }
@@ -32,6 +39,7 @@ export default function Dashboard() {
 
   const handlerDeslogear = () => {
     setSteps(1);
+    localStorage.removeItem("userAdmin");
   };
   return (
     <>

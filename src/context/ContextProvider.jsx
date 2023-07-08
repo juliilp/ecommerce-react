@@ -3,9 +3,12 @@ import { fakestoreapi } from "../fakestoreapi/fakestoreapi";
 export const StoreContext = createContext();
 
 export default function ContextProvider({ children }) {
+  const storedCardFavoritas = localStorage.getItem("cardFavoritas");
   const [allProduct, setAllProduct] = useState([]);
   const [allProductRender, setAllProductRender] = useState([]);
-  const [cardFavoritas, setCardFavoritas] = useState([]);
+  const [cardFavoritas, setCardFavoritas] = useState(
+    storedCardFavoritas ? JSON.parse(storedCardFavoritas) : []
+  );
   const [openMenu, setOpenMenu] = useState(false);
   const [card, setCard] = useState([]);
   const [acumulador, setAcumulador] = useState(0);
@@ -66,14 +69,19 @@ export default function ContextProvider({ children }) {
     const cardFound = allProduct.find((item) => item.id === id);
     if (!cardFavoritas.includes(cardFound)) {
       setCardFavoritas([...cardFavoritas, cardFound]);
+      localStorage.setItem(
+        "cardFavoritas",
+        JSON.stringify([...cardFavoritas, cardFound])
+      );
     }
   };
   const handlerCardRemoveFavoritas = (id) => {
     const cardFound = allProduct.find((c) => c.id === id);
     console.log(cardFound);
-    const cardRemove = cardFavoritas.filter((c) => {
-      return c.id !== id;
-    });
+    const cardRemove = cardFavoritas.filter((c) => c.id !== id);
+
+    const updatedCardFavoritas = cardFavoritas.filter((c) => c.id !== id);
+    localStorage.setItem("cardFavoritas", JSON.stringify(updatedCardFavoritas));
     setCardFavoritas(cardRemove);
   };
   // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra

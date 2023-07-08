@@ -11,12 +11,8 @@ export default function CardProductFavorita({
   title,
   producto,
 }) {
-  const {
-    handlerAgregarCard,
-    handlerCardAddFavoritas,
-    handlerCardRemoveFavoritas,
-    cardFavoritas,
-  } = useContext(StoreContext);
+  const { handlerAgregarCard, handlerCardRemoveFavoritas } =
+    useContext(StoreContext);
   return (
     <section
       className="w-full h-full flex flex-col justify-center items-center mb-8"
