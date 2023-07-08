@@ -30,7 +30,7 @@ export default function CardMenuDesplegable({
             </div>
             <div className="flex justify-between w-full items-center ">
               <span>{price}</span>
-              <span>${price * amount}</span>
+              <span>${(price * amount).toFixed(2)}</span>
             </div>
           </div>
         </div>
