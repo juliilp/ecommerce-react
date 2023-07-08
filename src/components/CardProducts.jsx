@@ -17,7 +17,6 @@ export default function CardProducts({
     handlerCardAddFavoritas,
     handlerCardRemoveFavoritas,
     cardFavoritas,
-    allProduct,
   } = useContext(StoreContext);
   return (
     <section
