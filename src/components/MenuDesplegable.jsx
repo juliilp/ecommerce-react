@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { MdArrowForward } from "react-icons/md";
 import CardMenuDesplegable from "./CardMenuDesplegable";
 export default function MenuDesplegable() {
   const { openMenu, handlerMenu, card, acumulador, total, setCard } =
     useContext(StoreContext);
+
+  useEffect(() => {
+    if (card.length === 0) {
+      handlerMenu();
+    }
+  }, [card]);
+
   return (
     <section
       className={`${
@@ -31,7 +38,7 @@ export default function MenuDesplegable() {
           })}
       </div>
       <div className="w-full flex justify-between px-8">
-        <p>TOTAL: ${total}</p>
+        <p>TOTAL: ${total.toFixed(2)}</p>
         <button onClick={() => setCard([])}>Clear Carrito</button>
       </div>
     </section>
