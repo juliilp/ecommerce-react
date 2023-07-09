@@ -19,7 +19,7 @@ export default function CardProductFavorita({
       className="w-full h-full flex flex-col justify-center items-center mb-8"
       key={id}
     >
-      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative transition group ">
+      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative transition group xl:w-[350px] xl-[300px] 2xl:w-[400px] 2xl:h-[350px] ">
         <img
           src={image}
           className="max-h-[160px] group-hover:scale-125 duration-300 "
