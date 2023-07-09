@@ -27,6 +27,7 @@ export default function CrearProducto() {
   ];
 
   const submitHandler = (e) => {
+    console.log(form);
     e.preventDefault();
     setAllProductRender([...allProductRender, form]);
     setAllProduct([...allProduct, form]);
@@ -49,6 +50,12 @@ export default function CrearProducto() {
       ...form,
       [e.target.name]: e.target.value,
     });
+    if (e.target.name === "price") {
+      setForm({
+        ...form,
+        price: parseInt(e.target.value),
+      });
+    }
   };
 
   const [form, setForm] = useState({
@@ -58,6 +65,7 @@ export default function CrearProducto() {
     price: "",
     title: "",
     stock: 10,
+    amount: 1,
     visible: false.toString(),
   });
   return (
@@ -96,7 +104,7 @@ export default function CrearProducto() {
         <div>
           <span>price</span>
           <input
-            type="text"
+            type="number"
             name="price"
             onChange={formHandler}
             value={form.price}
