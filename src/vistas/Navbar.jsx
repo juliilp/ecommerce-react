@@ -16,7 +16,7 @@ export default function Navbar() {
     if (e.key === "Enter") {
       if (inputSearch.length > 0) {
         const filterCard = allProduct.filter((c) =>
-          c.title.includes(inputSearch)
+          c.title.toLowerCase().includes(inputSearch.toLowerCase())
         );
 
         setAllProductRender(filterCard);

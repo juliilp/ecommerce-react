@@ -7,7 +7,7 @@ export default function MainHome() {
   return (
     <main className="">
       <Link to="/dashboard">Dashboar</Link>
-      <Carousel />
+      {/* <Carousel /> */}
     </main>
   );
 }
