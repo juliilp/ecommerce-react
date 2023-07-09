@@ -1,6 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/ContextProvider";
+import Swal from "sweetalert2";
 export default function CrearProducto() {
   const navigate = useNavigate();
   const { allProduct, allProductRender, setAllProductRender, setAllProduct } =
@@ -30,6 +31,18 @@ export default function CrearProducto() {
     setAllProductRender([...allProductRender, form]);
     setAllProduct([...allProduct, form]);
     localStorage.setItem(form.title, form.visible);
+    setForm({
+      id: null,
+      image: "",
+      description: "",
+      price: "",
+      title: "",
+      stock: 10,
+      visible: false.toString(),
+    });
+    Swal.fire("Producto creado!", "success");
+    console.log(allProduct);
+    localStorage.setItem("Array", [...allProduct, form]);
   };
   const formHandler = (e) => {
     setForm({
@@ -64,19 +77,39 @@ export default function CrearProducto() {
         </select>
         <div>
           <span>description</span>
-          <input type="text" name="description" onChange={formHandler} />
+          <input
+            type="text"
+            name="description"
+            value={form.description}
+            onChange={formHandler}
+          />
         </div>
         <div>
           <span>image</span>
-          <input type="text" name="image" onChange={formHandler} />
+          <input
+            type="text"
+            name="image"
+            onChange={formHandler}
+            value={form.image}
+          />
         </div>
         <div>
           <span>price</span>
-          <input type="text" name="price" onChange={formHandler} />
+          <input
+            type="text"
+            name="price"
+            onChange={formHandler}
+            value={form.price}
+          />
         </div>
         <div>
           <span>title</span>
-          <input type="text" name="title" onChange={formHandler} />
+          <input
+            type="text"
+            name="title"
+            onChange={formHandler}
+            value={form.title}
+          />
         </div>
         <button>Enviar datos</button>
       </form>

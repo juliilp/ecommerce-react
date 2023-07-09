@@ -82,6 +82,12 @@ export default function Dashboard() {
       {steps === 2 && (
         <section className="w-full">
           <Link to="/">Home</Link>
+          <Link
+            to="/crearproducto"
+            className="block py-2 px-6 bg-slate-500 cursor-pointer w-max rounded-full text-white ml-6"
+          >
+            Crear Producto
+          </Link>
           <button onClick={handlerDeslogear}>Deslogear</button>
           <div className="w-full flex justify-center items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mt-4">
@@ -93,7 +99,7 @@ export default function Dashboard() {
                 return (
                   <div
                     key={c.id}
-                    className="w-[300px] h-[300px] border border-gray-500 flex justify-center items-center flex-col overflow-hidden "
+                    className="w-[300px] h-[300px] border border-[#e4e4e4] flex justify-center items-center flex-col overflow-hidden "
                   >
                     <img
                       src={c.image}
