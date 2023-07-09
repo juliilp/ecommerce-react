@@ -19,15 +19,12 @@ export default function CardProductFavorita({
       className="w-full h-full flex flex-col justify-center items-center mb-8"
       key={id}
     >
-      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative overflow-hidden transition group ">
-        <Link to={`product/${id}`}>
-          <img
-            src={image}
-            className="max-h-[160px] group-hover:scale-125 duration-300 "
-            alt="imagen"
-          />
-        </Link>
-
+      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative transition group ">
+        <img
+          src={image}
+          className="max-h-[160px] group-hover:scale-125 duration-300 "
+          alt="imagen"
+        />
         <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0 -right-10 group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
           <BsPlus
             size={30}
@@ -41,12 +38,12 @@ export default function CardProductFavorita({
           </button>
         </div>
       </div>
-      <div className=" w-[300px] h-[150px] ">
-        <p>{category}</p>
-        <Link to={`product/${id}`}>
-          <h2 className="font-bold">{title}</h2>
-        </Link>
-        <span>{price}</span>
+      <div className=" w-[300px]  flex justify-between ">
+        <div>
+          <p className="text-[#8e8A8C] font-semibold">{category}</p>
+          <h2 className="font-bold w-[70%]">{title}</h2>
+        </div>
+        <span className="text-lg">${price}</span>
       </div>
     </section>
   );

@@ -20,16 +20,18 @@ export default function CardProducts({
   } = useContext(StoreContext);
   return (
     <section
-      className="w-[250px] h-[250px] flex flex-col justify-center items-center mb-8"
+      className="w-full h-full flex flex-col justify-center items-center mb-8 mt"
       key={id}
     >
-      <div className="  h-full w-full flex justify-center items-center  border border-[#e4e4e4] mb-4 relative overflow-hidden transition group ">
+      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative  transition group ">
         <Link to={`product/${id}`}>
-          <img
-            src={image}
-            className="max-h-[160px] g  roup-hover:scale-125 duration-300 "
-            alt="imagen"
-          />
+          <div className="w-[300px] h-[250px] flex items-center justify-center">
+            <img
+              src={image}
+              className="max-h-[160px] g  roup-hover:scale-125 duration-300 "
+              alt="imagen"
+            />
+          </div>
         </Link>
 
         <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0 -right-10 group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
@@ -50,12 +52,14 @@ export default function CardProducts({
           )}
         </div>
       </div>
-      <div className=" w-full h-full ">
-        <p>{category}</p>
-        <Link to={`product/${id}`}>
-          <h2 className="font-bold">{title}</h2>
-        </Link>
-        <span>{price}</span>
+      <div className=" w-[300px] flex justify-between ">
+        <div>
+          <p className="text-[#8e8A8C] font-semibold">{category}</p>
+          <Link to={`product/${id}`}>
+            <h2 className="font-bold w-[80%] ">{title}</h2>
+          </Link>
+        </div>
+        <span className="text-lg">${price}</span>
       </div>
       <Toaster
         position="top-left"
