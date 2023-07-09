@@ -20,21 +20,21 @@ export default function CardProducts({
   } = useContext(StoreContext);
   return (
     <section
-      className="w-full h-full flex flex-col justify-center items-center mb-8 mt"
+      className="  w-full h-full flex flex-col justify-center items-center mt my-16 overflow-hidden  "
       key={id}
     >
-      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative  transition group xl:w-[350px] xl-[300px] 2xl:w-[400px] 2xl:h-[350px] ">
+      <div className=" w-[300px] h-[250px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative transition group lg:w-[350px] lg:h-[350px]">
         <Link to={`product/${id}`}>
-          <div className="w-[300px] h-[250px] flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
             <img
               src={image}
-              className="max-h-[160px] g  roup-hover:scale-125 duration-300 "
+              className="max-h-[160px] g  roup-hover:scale-125 duration-300 pointer-events-none "
               alt="imagen"
             />
           </div>
         </Link>
 
-        <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0 -right-10 group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
+        <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0  pointer-events-none -right-10 group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
           <BsPlus
             size={30}
             color="white"
@@ -52,14 +52,17 @@ export default function CardProducts({
           )}
         </div>
       </div>
-      <div className=" w-[300px] xl:w-[350px] 2xl:w-[400px] flex justify-between ">
+      {/* xl:w-[350px] 2xl:w-[400px] */}
+      <div className=" w-[300px] lg:w-[350px] flex justify-between ">
         <div>
-          <p className="text-[#8e8A8C] font-semibold">{category}</p>
+          <p className="text-[#8e8A8C] font-semibold lg:text-lg ">{category}</p>
           <Link to={`product/${id}`}>
-            <h2 className="font-bold w-[80%] ">{title}</h2>
+            <h2 className="font-bold w-[80%] lg:text-lg lg:font-semibold ">
+              {title}
+            </h2>
           </Link>
         </div>
-        <span className="text-lg">${price}</span>
+        <span className="text-lg lg:text-xl">${price}</span>
       </div>
       <Toaster
         position="top-left"
