@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 export default function Dashboard() {
   const { allProductRender, handlerBorradoLogico, switcherBorradoLogico } =
     useContext(StoreContext);
@@ -27,13 +27,16 @@ export default function Dashboard() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
     if (user.nombre === "admin" && user.contraseña === "admin") {
       setError("");
       setSteps(2);
       localStorage.setItem("userAdmin", 2);
     } else {
-      setError("Datos incorrectos");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Usuario Incorrecto!",
+      });
     }
   };
 
@@ -46,24 +49,32 @@ export default function Dashboard() {
       {steps === 1 && (
         <section className="w-full h-full flex justify-center items-center font-poppins">
           <form
-            className="border border-gray-500 flex flex-col items-center justify-center w-[300px] h-[400px] gap-6 bg-slate-600 mt-6"
+            className=" flex flex-col justify-center w-[300px] h-[400px] gap-6 mt-6"
             onSubmit={handlerSubmit}
           >
-            <input
-              type="text"
-              name="nombre"
-              onChange={handlerUser}
-              className="outline-none"
-              placeholder="usuario"
-            />
-            <input
-              type="password"
-              name="contraseña"
-              onChange={handlerUser}
-              className="outline-none"
-              placeholder="contraseña"
-            />
-            <button className="bg-red-300 py-2 px-6 rounded-lg">Logear</button>
+            <div className="flex flex-col">
+              <span>Usuario</span>
+              <input
+                type="text"
+                name="nombre"
+                onChange={handlerUser}
+                className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none "
+                placeholder="Escribí tu usuario..."
+              />
+            </div>
+            <div className="flex flex-col">
+              <span>Contraseña</span>
+              <input
+                type="password"
+                name="contraseña"
+                onChange={handlerUser}
+                className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none "
+                placeholder="********"
+              />
+            </div>
+            <button className=" py-2 px-16 rounded-lg bg-[#010001] text-white font-semibold">
+              Ingresar
+            </button>
             {error && <p>{error}</p>}
           </form>
         </section>

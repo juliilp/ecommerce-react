@@ -30,7 +30,7 @@ export default function ContextProvider({ children }) {
         image: e.image,
         price: e.price,
         rating: e.rating,
-        visible: localStorage.getItem(e.title) || true,
+        visible: localStorage.getItem(e.title) || "true",
         stock: 10,
         amount: 1,
       };
