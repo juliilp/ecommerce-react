@@ -119,8 +119,6 @@ export default function Dashboard() {
                   </div>
                 );
               })}
-            </div>
-            <div>
               {ItemLocalStorage &&
                 ItemLocalStorage.map((producto) => {
                   return (
