@@ -31,7 +31,19 @@ export default function CrearProducto() {
     e.preventDefault();
     setAllProductRender([...allProductRender, form]);
     setAllProduct([...allProduct, form]);
-    localStorage.setItem(form.title, form.visible);
+    const saveToLocalStorage = (data) => {
+      const existingData = localStorage.getItem("formData");
+      let formDataArray = [];
+
+      if (existingData) {
+        formDataArray = JSON.parse(existingData);
+      }
+
+      formDataArray.push(form);
+      localStorage.setItem("formData", JSON.stringify(formDataArray));
+    };
+    saveToLocalStorage();
+
     setForm({
       id: null,
       image: "",
@@ -43,7 +55,6 @@ export default function CrearProducto() {
     });
     Swal.fire("Producto creado!", "success");
     console.log(allProduct);
-    localStorage.setItem("Array", [...allProduct, form]);
   };
   const formHandler = (e) => {
     setForm({

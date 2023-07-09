@@ -4,8 +4,11 @@ import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 export default function Dashboard() {
-  const { allProductRender, handlerBorradoLogico, switcherBorradoLogico } =
-    useContext(StoreContext);
+  const {
+    allProductRender,
+    handlerBorradoLogico,
+    handlerBorradoLogicoLocalStorage,
+  } = useContext(StoreContext);
   const [steps, setSteps] = useState(1);
   const [error, setError] = useState("");
   const [user, setUser] = useState({
@@ -44,6 +47,7 @@ export default function Dashboard() {
     setSteps(1);
     localStorage.removeItem("userAdmin");
   };
+  const ItemLocalStorage = JSON.parse(localStorage.getItem("formData"));
   return (
     <>
       {steps === 1 && (
@@ -115,6 +119,33 @@ export default function Dashboard() {
                   </div>
                 );
               })}
+            </div>
+            <div>
+              {ItemLocalStorage &&
+                ItemLocalStorage.map((producto) => {
+                  return (
+                    <div
+                      key={producto.id}
+                      className="w-[300px] h-[300px] border border-[#e4e4e4] flex justify-center items-center flex-col overflow-hidden "
+                    >
+                      <img
+                        src={producto.image}
+                        alt="Imagen"
+                        className="w-[160px] h-[160px]"
+                      />
+                      <h2>{producto.title}</h2>
+                      <button
+                        onClick={() =>
+                          handlerBorradoLogicoLocalStorage(producto.id)
+                        }
+                      >
+                        {producto.visible === "true"
+                          ? "Click para deshabilitar"
+                          : "Click para habilitar"}
+                      </button>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </section>

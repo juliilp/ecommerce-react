@@ -70,6 +70,17 @@ export default function ContextProvider({ children }) {
     }
     console.log(valor);
   };
+
+  const handlerBorradoLogicoLocalStorage = (id) => {
+    const itemLocalStorage = JSON.parse(localStorage.getItem("formData")) || [];
+    const findProductIndex = itemLocalStorage.findIndex((c) => c.id === id);
+    if (findProductIndex !== -1) {
+      const findProduct = itemLocalStorage[findProductIndex];
+      findProduct.visible = findProduct.visible === "true" ? "false" : "true";
+      localStorage.setItem("formData", JSON.stringify(itemLocalStorage));
+      setRefresh(Math.random());
+    }
+  };
   const handlerCardAddFavoritas = (id) => {
     console.log(allProduct);
     const cardFound = allProduct.find((item) => item.id === id);
@@ -174,6 +185,7 @@ export default function ContextProvider({ children }) {
         setBorradoLogico,
         borradoLogico,
         switcherBorradoLogico,
+        handlerBorradoLogicoLocalStorage,
       }}
     >
       {children}
