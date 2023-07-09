@@ -47,7 +47,6 @@ export default function CrearProducto() {
     stock: 10,
     visible: false.toString(),
   });
-  console.log(allProductRender);
   return (
     <section className="w-full h-[93vh] md:h-[70vh] flex justify-center items-center flex-col font-poppins">
       <Link to="/">Ir al home</Link>

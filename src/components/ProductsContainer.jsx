@@ -8,7 +8,7 @@ export default function ProductsContainer() {
   // Si no anda, le tengo que poner el true en string o booleano
   let render = allProductRender.filter((p) => p.visible === "true");
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:justify-self-center">
+    <section className=" mt-[15vh] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:justify-self-center">
       {render.map((producto, key) => (
         <CardProducts
           image={producto.image}

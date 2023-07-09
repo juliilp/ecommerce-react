@@ -52,7 +52,7 @@ export default function CardProducts({
           )}
         </div>
       </div>
-      <div className=" w-[300px] flex justify-between ">
+      <div className=" w-[300px] xl:w-[350px] 2xl:w-[400px] flex justify-between ">
         <div>
           <p className="text-[#8e8A8C] font-semibold">{category}</p>
           <Link to={`product/${id}`}>

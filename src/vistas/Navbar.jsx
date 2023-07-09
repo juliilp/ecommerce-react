@@ -2,8 +2,8 @@ import React from "react";
 import { useContext, useState } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { BsTelephone } from "react-icons/bs";
-import { FaBars } from "react-icons/fa";
-import { HiShoppingBag } from "react-icons/hi";
+import { HiShoppingBag, HiHome } from "react-icons/hi";
+import { MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 export default function Navbar() {
   const { allProduct, setAllProductRender, acumulador, handlerMenu } =
@@ -29,15 +29,8 @@ export default function Navbar() {
     ...new Set(allProduct.map((product) => product.category)),
   ];
 
-  // men's clothing
-  // jewelery
-  // electronics
-  // women's clothing
-  // const filterCategories = allProduct.filter(
-  //   (producto) => producto.category === "men's clothing"
-  // );
   return (
-    <header className="w-full bg-slate-500 fixed top-0 z-20 h-[10vh] md:h-[12vh] md:static">
+    <header className="w-full bg-white fixed top-0 z-20 h-[10vh] md:h-[12vh] md:static">
       <div className="relative w-full flex justify-center items-center h-full gap-6 flex-col">
         {/* Esto es la navbar superior que solo aparece en 768px */}
         <div className=" hidden w-full md:flex justify-between items-center bg-[#036043] h-[5vh] text-white px-6 ">
@@ -49,26 +42,35 @@ export default function Navbar() {
           <span>Shopcart - E-commerce</span>
         </div>
 
-        <div className=" w-full h-[7vh] items-center md:items-stretch flex flex-col gap-1 px-6">
+        <div className=" w-full  h-[7vh] items-center md:items-stretch flex flex-col gap-1  ">
           <input
             type="text"
             onKeyDown={handlerInputSearch}
             placeholder="Buscá tu producto..."
-            className="outline-none pl-4 py-1 max-w-[900px] h-max w-[250px] "
+            className="rounded border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none  max-w-[900px] "
           />
-          <div className="flex">
-            <Link to="/">
-              <span className="cursor-pointer ">Inicio</span>
-            </Link>
-            <Link to="favoritos">
-              <span className="cursor-pointer ">Favoritos</span>
-            </Link>
-
+          <div className="w-full flex gap-6 items-center justify-between px-4 ">
             <div className="flex relative cursor-pointer" onClick={handlerMenu}>
-              <HiShoppingBag size={30} className="cursor-pointer" />
-              <span className="absolute top-0 right-0 text-lg font-semibold z-20 text-white">
+              <HiShoppingBag
+                size={30}
+                className="cursor-pointer"
+                color="#909090"
+              />
+              <span className="absolute top-0 right-0 text-lg font-semibold z-20 ">
                 {acumulador}
               </span>
+            </div>
+            <Link to="/">
+              <div className="flex items-center">
+                <HiHome size={30} className="cursor-pointer" />
+                <span className="font-semibold">Inicio</span>
+              </div>
+            </Link>
+            <div className="flex items-center">
+              <MdFavorite color="red" size={30} />
+              <Link to="favoritos">
+                <span className="cursor-pointer font-semibold ">Favoritos</span>
+              </Link>
             </div>
           </div>
         </div>
