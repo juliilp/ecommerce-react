@@ -34,7 +34,7 @@ export default function CardProducts({
           </div>
         </Link>
 
-        <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0  pointer-events-none -right-10 group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
+        <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0  -right-10  pointer-events-none  group-hover:pointer-events-auto group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
           <BsPlus
             size={30}
             color="white"
