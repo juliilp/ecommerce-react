@@ -5,7 +5,7 @@ import Carousel from "./Carousel";
 export default function MainHome() {
   // const { handlerMenu } = useContext(StoreContext);
   return (
-    <main className="w-full">
+    <main className="">
       <Link to="/dashboard">Dashboar</Link>
       <Carousel />
     </main>

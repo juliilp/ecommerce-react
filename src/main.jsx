@@ -9,10 +9,12 @@ import Navbar from "./vistas/Navbar";
 import Dashboard from "./vistas/Dashboard";
 import ProductDetail from "./vistas/ProductDetail";
 import CrearProducto from "./vistas/CrearProducto";
+import MenuDesplegable from "./components/MenuDesplegable";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <BrowserRouter>
       <Navbar />
+      <MenuDesplegable />
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Home />} />

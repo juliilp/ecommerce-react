@@ -5,8 +5,9 @@ import CardProducts from "./CardProducts";
 export default function ProductsContainer() {
   const { allProductRender } = useContext(StoreContext);
 
-  const render = allProductRender.filter((p) => p.visible === "true");
-  console.log(render);
+  // Si no anda, le tengo que poner el true en string o booleano
+  const render = allProductRender.filter((p) => p.visible === true);
+  console.log(allProductRender);
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:justify-self-center">
       {render.map((producto, key) => (

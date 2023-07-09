@@ -5,23 +5,64 @@ import axios from "axios";
 import { IoMdAdd, IoMdRemove } from "react-icons/Io";
 import { FaTruck, FaMotorcycle } from "react-icons/fa";
 export default function ProductDetail() {
-  const {
-    handlerRestaAmount,
-    handlerSumaAmount,
-    allProductRender,
-    handlerRestaAmountDetail,
-  } = useContext(StoreContext);
+  const { allProductRender, card, setCard } = useContext(StoreContext);
   const { id } = useParams();
   const [product, setProduct] = useState(allProductRender);
-
+  const [amount, setAmount] = useState(product && product.amount);
   useEffect(() => {
     const detail = allProductRender.find((c) => c.id == id);
     setProduct(detail);
   }, [allProductRender]);
 
   useEffect(() => {
-    console.log(product);
-  }, [product]);
+    const storedCard = localStorage.getItem("agregarcard");
+    if (storedCard) {
+      setCard(JSON.parse(storedCard));
+    }
+  }, []);
+
+  const handlerSumaAmountDetail = () => {
+    const findCard = card.find(
+      (c) => c.id.toString() === product.id.toString()
+    );
+
+    if (findCard) {
+      const updatedProduct = { ...product, amount: product.amount + 1 };
+      setProduct(updatedProduct);
+      const updatedCard = [
+        ...card.filter((c) => c.id.toString() !== product.id.toString()),
+        updatedProduct,
+      ];
+      setCard(updatedCard);
+      localStorage.setItem("agregarcard", JSON.stringify(updatedCard));
+    } else {
+      setCard([...card, product]);
+      localStorage.setItem("agregarcard", JSON.stringify([...card, product]));
+    }
+  };
+
+  const handlerRestaAmountDetail = () => {
+    const findCard = card.find(
+      (c) => c.id.toString() === product.id.toString()
+    );
+
+    if (findCard) {
+      if (findCard.amount === 1) {
+        // Si la cantidad es 1, se mantiene igual, no se resta ni se elimina
+        return;
+      } else {
+        const updatedProduct = { ...product, amount: product.amount - 1 };
+        setProduct(updatedProduct);
+        const updatedCard = [
+          ...card.filter((c) => c.id.toString() !== product.id.toString()),
+          updatedProduct,
+        ];
+        setCard(updatedCard);
+        localStorage.setItem("agregarcard", JSON.stringify(updatedCard));
+      }
+    }
+  };
+
   return (
     <section className="flex w-full flex-col md:flex-row justify-center items-center ">
       {product ? (
@@ -32,27 +73,27 @@ export default function ProductDetail() {
             <p>{product.description}</p>
             <div className="flex flex-col">
               <span>
-                {product.price} OR {product.price % 4}/month
+                {product.price} OR {(product.price % 4).toFixed(2)}/month
               </span>
               <span>Suggested payments with 6 months special financing</span>
             </div>
-            {/* <div className=" flex gap-6">
+            <div className=" flex gap-6">
               <div className="flex w-max items-center gap-6 py-1 px-3 border border-gray-400">
                 <IoMdRemove
                   className="cursor-pointer"
                   onClick={() => handlerRestaAmountDetail(id)}
                 />
-                <span>{product.amount ? product.amount : 1}</span>
+                <span>{product.amount}</span>
                 <IoMdAdd
                   className="cursor-pointer"
-                  onClick={() => handlerSumaAmount(id)}
+                  onClick={handlerSumaAmountDetail}
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <span>Only 12 item left!</span>
                 <span>Don't miss it</span>
               </div>
-            </div> */}
+            </div>
             <div className="flex gap-4">
               <button>Buy Now</button>
               <button>Add to Cart</button>

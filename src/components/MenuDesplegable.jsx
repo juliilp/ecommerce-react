@@ -31,10 +31,10 @@ export default function MenuDesplegable() {
       </div>
       <div className="h-[550px] overflow-y-auto">
         {card &&
-          card.map((c) => {
+          card.map((c, key) => {
             return (
               <CardMenuDesplegable
-                key={c.id}
+                key={key}
                 image={c.image}
                 title={c.title}
                 id={c.id}

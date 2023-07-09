@@ -32,6 +32,7 @@ export default function ContextProvider({ children }) {
         rating: e.rating,
         visible: localStorage.getItem(e.title) || true,
         stock: 10,
+        amount: 1,
       };
       array.push(algo);
     });

@@ -20,10 +20,10 @@ export default function CardProducts({
   } = useContext(StoreContext);
   return (
     <section
-      className="w-full h-full flex flex-col justify-center items-center mb-8"
+      className="w-[250px] h-[250px] flex flex-col justify-center items-center mb-8"
       key={id}
     >
-      <div className="  h-[250px] w-[300px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative overflow-hidden transition group ">
+      <div className="  h-full w-full flex justify-center items-center  border border-[#e4e4e4] mb-4 relative overflow-hidden transition group ">
         <Link to={`product/${id}`}>
           <img
             src={image}
@@ -50,7 +50,7 @@ export default function CardProducts({
           )}
         </div>
       </div>
-      <div className=" w-[300px] h-[150px] ">
+      <div className=" w-full h-full ">
         <p>{category}</p>
         <Link to={`product/${id}`}>
           <h2 className="font-bold">{title}</h2>
