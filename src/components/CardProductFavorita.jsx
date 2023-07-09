@@ -38,7 +38,7 @@ export default function CardProductFavorita({
           </button>
         </div>
       </div>
-      <div className=" w-[300px]  flex justify-between ">
+      <div className=" w-[300px] xl:w-[350px] 2xl:w-[400px]  flex justify-between ">
         <div>
           <p className="text-[#8e8A8C] font-semibold">{category}</p>
           <h2 className="font-bold w-[70%]">{title}</h2>
