@@ -49,7 +49,7 @@ export default function CrearProducto() {
   });
   console.log(allProductRender);
   return (
-    <section className="w-full h-[93vh] md:h-[70vh] flex justify-center items-center flex-col ">
+    <section className="w-full h-[93vh] md:h-[70vh] flex justify-center items-center flex-col font-poppins">
       <Link to="/">Ir al home</Link>
       <form
         className="flex w-[350px] h-[300px] border border-blue-300 flex-col bg-slate-500 gap-6 justify-center items-center"

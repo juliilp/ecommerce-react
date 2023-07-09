@@ -6,7 +6,7 @@ import CardProductFavorita from "../components/CardProductFavorita";
 export default function Favoritas() {
   const { cardFavoritas } = useContext(StoreContext);
   return (
-    <section>
+    <section className="font-poppins">
       {cardFavoritas.length > 0 ? (
         cardFavoritas.map((card, key) => (
           <CardProductFavorita

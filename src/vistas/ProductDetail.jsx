@@ -64,21 +64,40 @@ export default function ProductDetail() {
   };
 
   return (
-    <section className="flex w-full flex-col md:flex-row justify-center items-center ">
+    <section className="flex w-full flex-col md:flex-row justify-center items-center mt-[5vh] px-10 mb-[100px] md:mb-0 md:px-0 md:gap-12 font-poppins xl:gap-40">
       {product ? (
         <>
-          <img src={product.image} alt="imagen" className="w-[350px]" />
-          <div className="flex flex-col gap-8">
-            <h1>{product.title}</h1>
-            <p>{product.description}</p>
-            <div className="flex flex-col">
-              <span>
-                {product.price} OR {(product.price % 4).toFixed(2)}/month
+          <div className="mt-[5vh] border border- p-8 flex justify-center items-center  ">
+            <img
+              src={product.image}
+              alt="imagen"
+              className="w-[200px] md:w-[250px] xl:w-[350px]"
+            />
+          </div>
+          <div className="flex flex-col gap-8 md:gap-4 xl:w-[400px] xl:justify-center xl:gap-6">
+            <h1 className="font-bold w-[200px] mx-auto text-[20px] mt-6 mb-3 md:w-[250px] md:text-[25px] xl:w-[350px] xl:text-[30px]">
+              {product.title}
+            </h1>
+            <p className="text-[#8E8A8C] w-[295px] xl:w-[375px] ">
+              {product.description}
+            </p>
+            <div className="flex flex-col  w-[295px] ">
+              <span className="text-[16px] font-bold">
+                <span className="text-[20px] md:text-[25px] xl:text-[30px]">
+                  ${product.price}
+                </span>{" "}
+                OR{" "}
+                <span className="text-[20px] md:text-[25px] xl:text-[30px]">
+                  ${(product.price % 4).toFixed(2)}
+                </span>
+                /month
               </span>
-              <span>Suggested payments with 6 months special financing</span>
+              <span className="text-[#8e8A8C] font-semibold">
+                Suggested payments with 6 months special financing
+              </span>
             </div>
-            <div className=" flex gap-6">
-              <div className="flex w-max items-center gap-6 py-1 px-3 border border-gray-400">
+            <div className=" flex gap-4 items-center md:gap-6 xl:gap-10 ">
+              <div className="flex w-[146px] h-max items-center gap-6  px-7 py-3 border border-gray-400 rounded-full bg-[#F6F5F6]  ">
                 <IoMdRemove
                   className="cursor-pointer"
                   onClick={() => handlerRestaAmountDetail(id)}
@@ -89,28 +108,34 @@ export default function ProductDetail() {
                   onClick={handlerSumaAmountDetail}
                 />
               </div>
-              <div className="flex flex-col gap-2">
-                <span>Only 12 item left!</span>
+              <div className="flex flex-col">
+                <span>
+                  Only{" "}
+                  <span className="text-[#F7AE7B] font-semibold">12 item</span>{" "}
+                  left!
+                </span>
                 <span>Don't miss it</span>
               </div>
             </div>
             <div className="flex gap-4">
-              <button>Buy Now</button>
-              <button>Add to Cart</button>
+              <button className="mx-auto bg-red-500 rounded-full py-3 px-9 text-white font-semibold xl:py-5 xl:px-16 ">
+                Buy Now
+              </button>
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-1">
                 <div className="flex gap-1 items-center">
-                  <FaTruck size={30} />
-                  <span>Free Delivery</span>
+                  <FaTruck size={30} color="#FC954B" />
+                  <span className="font-semibold">Free Delivery</span>
                 </div>
-                <div className="flex gap-1 items-center">
-                  <FaMotorcycle size={35} />
-                  <span>Enter your Postal code for delivery Availability</span>
-                </div>
+
+                <span>Enter your Postal code for delivery Availability</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span>Return Delivery</span>
+                <div className="flex gap-1 items-center">
+                  <FaMotorcycle size={35} color="#FC954B" />
+                  <span className="font-semibold">Return Delivery</span>
+                </div>
                 <span>sapn 30days Delivery Return. Details</span>
               </div>
             </div>

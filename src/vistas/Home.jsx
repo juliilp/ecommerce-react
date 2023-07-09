@@ -4,7 +4,7 @@ import MainHome from "../components/MainHome";
 
 export default function Home() {
   return (
-    <main>
+    <main className="font-poppins">
       <MainHome />
       <ProductsContainer />
     </main>
