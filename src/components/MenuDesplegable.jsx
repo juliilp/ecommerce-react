@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { StoreContext } from "../context/ContextProvider";
-import { MdArrowForward } from "react-icons/md";
+import { MdArrowForward, MdOutlineCleaningServices } from "react-icons/md";
+import { FiTrash2 } from "react-icons/fi";
 import CardMenuDesplegable from "./CardMenuDesplegable";
 export default function MenuDesplegable() {
   const {
@@ -23,13 +24,17 @@ export default function MenuDesplegable() {
     <section
       className={`${
         openMenu ? "right-0" : "-right-full"
-      } bg-white fixed w-full h-screen top-0 md:w-[47vw] lg:w-[40vw] xl:[20vw] 2xl:[15vw] transition-all duration-300 ease-in-out z-[999]`}
+      } bg-white fixed w-full h-screen top-0 md:w-[55vw] lg:w-[50vw] xl:w-[40vw] 2xl:w-[30vw] transition-all duration-300 ease-in-out z-[999]`}
     >
-      <div className="flex justify-between items-center  border border-gray-400 h-[70px] pl-6">
+      <div className="flex justify-between items-center  border-b border-gray-400 h-[70px] pl-6">
         <span className="font-semibold">Items Acumulados ({acumulador})</span>
-        <MdArrowForward size={30} onClick={handlerMenu} />
+        <MdArrowForward
+          size={30}
+          onClick={handlerMenu}
+          className="cursor-pointer"
+        />
       </div>
-      <div className="h-[550px] overflow-y-auto">
+      <div className="h-[600px] overflow-y-auto">
         {card &&
           card.map((c, key) => {
             return (
@@ -44,9 +49,13 @@ export default function MenuDesplegable() {
             );
           })}
       </div>
-      <div className="w-full flex justify-between px-8">
-        <p>TOTAL: ${total.toFixed(2)}</p>
-        <button onClick={() => setCard([])}>Clear Carrito</button>
+      <div className="w-full flex justify-between items-center  px-12">
+        <p className="font-semibold">
+          TOTAL:<span className="pl-2">${total.toFixed(2)}</span>{" "}
+        </p>
+        <div className=" flex cursor-pointer bg-red-500 text-white w-12 h-12 items-center justify-center ">
+          <FiTrash2 onClick={() => setCard([])} />
+        </div>
       </div>
     </section>
   );
