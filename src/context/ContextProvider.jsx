@@ -137,6 +137,7 @@ export default function ContextProvider({ children }) {
       return c.id !== id;
     });
     setCard(removeCard);
+    localStorage.setItem("agregarcard", JSON.stringify(removeCard));
   };
 
   const handlerSumaAmount = (id) => {
