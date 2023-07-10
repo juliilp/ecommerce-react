@@ -38,7 +38,7 @@ export default function Dashboard() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Usuario Incorrecto!",
+        text: "User Wrong!",
       });
     }
   };
@@ -57,17 +57,17 @@ export default function Dashboard() {
             onSubmit={handlerSubmit}
           >
             <div className="flex flex-col">
-              <span>Usuario</span>
+              <span>User</span>
               <input
                 type="text"
                 name="nombre"
                 onChange={handlerUser}
                 className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none "
-                placeholder="Escribí tu usuario..."
+                placeholder="user..."
               />
             </div>
             <div className="flex flex-col">
-              <span>Contraseña</span>
+              <span>Password</span>
               <input
                 type="password"
                 name="contraseña"
@@ -77,7 +77,7 @@ export default function Dashboard() {
               />
             </div>
             <button className=" py-2 px-16 rounded-lg bg-[#010001] text-white font-semibold">
-              Ingresar
+              Sign in
             </button>
             {error && <p>{error}</p>}
           </form>
@@ -88,14 +88,14 @@ export default function Dashboard() {
           <div className="flex flex-col items-center w-full gap-4 justify-around md:flex-row md:gap-0">
             <Link to="/crearproducto">
               <button className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none">
-                Crear Producto
+                Create product
               </button>
             </Link>
             <button
               onClick={handlerDeslogear}
               className="h-[40px] w-[150px] rounded-xl text-white bg-[#E4B363]  font-semibold text-center"
             >
-              Desconectar
+              Disconnect
             </button>
           </div>
           <div className="w-full flex justify-center items-center">
@@ -126,7 +126,7 @@ export default function Dashboard() {
                         onClick={() => handlerBorradoLogico(c.id)}
                         className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none"
                       >
-                        {valor === "true" ? "Deshabilitar" : "Habilitar"}
+                        {valor === "true" ? "Enabled" : "Disabled"}
                       </button>
                     </div>
                   );
@@ -155,9 +155,7 @@ export default function Dashboard() {
                         }
                         className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none"
                       >
-                        {producto.visible === "true"
-                          ? "Deshabilitar"
-                          : "Habilitar"}
+                        {producto.visible === "true" ? "Enabled" : "Disabled"}
                       </button>
                     </section>
                   );

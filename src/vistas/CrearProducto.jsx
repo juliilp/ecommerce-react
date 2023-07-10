@@ -95,24 +95,19 @@ export default function CrearProducto() {
   };
   console.log(form);
   return (
-    <section className="w-full h-[93vh] md:h-[70vh] mt-[15vh] flex justify-center items-center flex-col font-poppins">
+    <section className="w-full  mt-[30vh] flex justify-center items-center flex-col font-poppins gap-8">
+      <select className="outline-none " onChange={handleSelect}>
+        <option>Categories</option>
+        {uniqueCategories.map((producto, index) => (
+          <option key={index} name="category" value={producto}>
+            {producto}
+          </option>
+        ))}
+      </select>
       <form
-        className="flex w-[350px] h-[300px] border border-blue-300 flex-col  gap-2 justify-center items-center rounded-xl md:w-[500px] md:h-[400px]"
+        className="flex w-[350px]  flex-col  gap-2 justify-center items-center rounded-xl md:w-[500px] md:h-[400px]"
         onSubmit={submitHandler}
       >
-        <div className="w-full flex pl-4">
-          <select
-            className="hidden md:block h-max w-max outline-none "
-            onChange={handleSelect}
-          >
-            <option>Categorias</option>
-            {uniqueCategories.map((producto, index) => (
-              <option key={index} name="category" value={producto}>
-                {producto}
-              </option>
-            ))}
-          </select>
-        </div>
         <div className="flex  flex-col">
           <span className="">Description</span>
           <input
@@ -121,7 +116,7 @@ export default function CrearProducto() {
             value={form.description}
             onChange={formHandler}
             className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none"
-            placeholder="Escribí tu descripcion.."
+            placeholder="Description..."
           />
         </div>
         <div className="flex  flex-col">
@@ -132,7 +127,7 @@ export default function CrearProducto() {
             onChange={formHandler}
             value={form.image}
             className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none"
-            placeholder="Pegá el link de tu imagen"
+            placeholder="Image..."
           />
         </div>
         <div className="flex  flex-col">
@@ -143,7 +138,7 @@ export default function CrearProducto() {
             onChange={formHandler}
             value={form.price}
             className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none"
-            placeholder="Escribí tu precio.."
+            placeholder="Price..."
           />
         </div>
         <div className="flex  flex-col">
@@ -154,11 +149,11 @@ export default function CrearProducto() {
             onChange={formHandler}
             value={form.title}
             className="rounded w-full border-gray-200 bg-gray-100 p-4 pr-32 text-sm font-medium focus:ring-0 outline-none"
-            placeholder="Escribí tu título"
+            placeholder="Title..."
           />
         </div>
-        <button className="py-2 px-16 rounded-lg bg-[#010001] text-white font-semibold">
-          Enviar datos
+        <button className="py-2 px-16 rounded-lg bg-[#010001] text-white font-semibold mt-8">
+          Send data
         </button>
       </form>
     </section>

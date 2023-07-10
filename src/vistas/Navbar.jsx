@@ -54,7 +54,7 @@ export default function Navbar() {
           <input
             type="text"
             onKeyDown={handlerInputSearch}
-            placeholder="Buscá tu producto..."
+            placeholder="Find your product.."
             className="rounded border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none w-[500px] md:order-3 xl:w-[600px] xl:py-3"
           />
           <div className="w-full flex gap-12 items-center justify-around px-4 md:justify-around lg:w-[60%] xl:w-[50%] 2xl:w-[35%] 2xl:gap-24">
@@ -74,13 +74,13 @@ export default function Navbar() {
             <Link to="/">
               <div className="flex items-center">
                 <HiHome size={30} className="cursor-pointer" />
-                <span className="font-semibold">Inicio</span>
+                <span className="font-semibold">Home</span>
               </div>
             </Link>
             <div className="flex items-center">
               <MdFavorite color="red" size={30} />
               <Link to="favoritos">
-                <span className="cursor-pointer font-semibold ">Favoritos</span>
+                <span className="cursor-pointer font-semibold ">Favorites</span>
               </Link>
             </div>
           </div>
