@@ -84,15 +84,20 @@ export default function Dashboard() {
         </section>
       )}
       {steps === 2 && (
-        <section className="w-full">
-          <Link to="/">Home</Link>
-          <Link
-            to="/crearproducto"
-            className="block py-2 px-6 bg-slate-500 cursor-pointer w-max rounded-full text-white ml-6"
-          >
-            Crear Producto
-          </Link>
-          <button onClick={handlerDeslogear}>Deslogear</button>
+        <section className="w-full mt-[15vh]">
+          <div className="flex flex-col items-center w-full gap-4 justify-around md:flex-row md:gap-0">
+            <Link to="/crearproducto">
+              <button className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none">
+                Crear Producto
+              </button>
+            </Link>
+            <button
+              onClick={handlerDeslogear}
+              className="h-[40px] w-[150px] rounded-xl text-white bg-[#E4B363]  font-semibold text-center"
+            >
+              Desconectar
+            </button>
+          </div>
           <div className="w-full flex justify-center items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mt-4">
               {allProductRender.map((c) => {
@@ -104,18 +109,24 @@ export default function Dashboard() {
                   return (
                     <div
                       key={c.id}
-                      className="w-[300px] h-[300px] border border-[#e4e4e4] flex justify-center items-center flex-col overflow-hidden "
+                      className="w-[350px] h-[400px] flex justify-center items-center flex-col overflow-hidden "
                     >
-                      <img
-                        src={c.image}
-                        alt="Imagen"
-                        className="w-[160px] h-[160px]"
-                      />
-                      <h2>{c.title}</h2>
-                      <button onClick={() => handlerBorradoLogico(c.id)}>
-                        {valor === "true"
-                          ? "Click para deshabilitar"
-                          : "Click para habilitar"}
+                      <div className="flex items-center justify-center">
+                        <img
+                          src={c.image}
+                          alt="Imagen"
+                          className="w-[250px] p-8 h-[250px] border border-[#e4e4e4] "
+                        />
+                      </div>
+
+                      <h2 className="w-[250px] font-semibold my-4 text-center">
+                        {c.title}
+                      </h2>
+                      <button
+                        onClick={() => handlerBorradoLogico(c.id)}
+                        className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none"
+                      >
+                        {valor === "true" ? "Deshabilitar" : "Habilitar"}
                       </button>
                     </div>
                   );
@@ -124,26 +135,31 @@ export default function Dashboard() {
               {ItemLocalStorage &&
                 ItemLocalStorage.map((producto) => {
                   return (
-                    <div
+                    <section
                       key={producto.id}
-                      className="w-[300px] h-[300px] border border-[#e4e4e4] flex justify-center items-center flex-col overflow-hidden "
+                      className="w-[350px] h-[400px] flex justify-center items-center flex-col overflow-hidden "
                     >
-                      <img
-                        src={producto.image}
-                        alt="Imagen"
-                        className="w-[160px] h-[160px]"
-                      />
-                      <h2>{producto.title}</h2>
+                      <div className="flex items-center justify-center">
+                        <img
+                          src={producto.image}
+                          alt="Imagen"
+                          className="w-[250px] p-8 h-[250px] border border-[#e4e4e4]"
+                        />
+                      </div>
+                      <h2 className="w-[250px] font-semibold my-4 text-center">
+                        {producto.title}
+                      </h2>
                       <button
                         onClick={() =>
                           handlerBorradoLogicoLocalStorage(producto.id)
                         }
+                        className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none"
                       >
                         {producto.visible === "true"
-                          ? "Click para deshabilitar"
-                          : "Click para habilitar"}
+                          ? "Deshabilitar"
+                          : "Habilitar"}
                       </button>
-                    </div>
+                    </section>
                   );
                 })}
             </div>
