@@ -96,28 +96,32 @@ export default function Dashboard() {
           <div className="w-full flex justify-center items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mt-4">
               {allProductRender.map((c) => {
-                if (!localStorage.getItem(c.title)) {
-                  localStorage.setItem(c.title, true);
+                console.log(allProductRender);
+
+                if (!c.create) {
+                  if (!localStorage.getItem(c.title)) {
+                    localStorage.setItem(c.title, true);
+                  }
+                  const valor = localStorage.getItem(c.title);
+                  return (
+                    <div
+                      key={c.id}
+                      className="w-[300px] h-[300px] border border-[#e4e4e4] flex justify-center items-center flex-col overflow-hidden "
+                    >
+                      <img
+                        src={c.image}
+                        alt="Imagen"
+                        className="w-[160px] h-[160px]"
+                      />
+                      <h2>{c.title}</h2>
+                      <button onClick={() => handlerBorradoLogico(c.id)}>
+                        {valor === "true"
+                          ? "Click para deshabilitar"
+                          : "Click para habilitar"}
+                      </button>
+                    </div>
+                  );
                 }
-                const valor = localStorage.getItem(c.title);
-                return (
-                  <div
-                    key={c.id}
-                    className="w-[300px] h-[300px] border border-[#e4e4e4] flex justify-center items-center flex-col overflow-hidden "
-                  >
-                    <img
-                      src={c.image}
-                      alt="Imagen"
-                      className="w-[160px] h-[160px]"
-                    />
-                    <h2>{c.title}</h2>
-                    <button onClick={() => handlerBorradoLogico(c.id)}>
-                      {valor === "true"
-                        ? "Click para deshabilitar"
-                        : "Click para habilitar"}
-                    </button>
-                  </div>
-                );
               })}
               {ItemLocalStorage &&
                 ItemLocalStorage.map((producto) => {

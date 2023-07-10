@@ -23,7 +23,7 @@ export default function CardProductFavorita({
         <Link to={`product/${id}`}>
           <div className="w-full h-full flex items-center justify-center">
             <img
-              src={image}
+              src={image ? image : "nad"}
               className="max-h-[160px] g  roup-hover:scale-125 duration-300 pointer-events-none "
               alt="imagen"
             />

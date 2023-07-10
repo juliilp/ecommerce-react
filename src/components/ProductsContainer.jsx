@@ -12,17 +12,19 @@ export default function ProductsContainer() {
     dataLocalStorage && dataLocalStorage.filter((p) => p.visible === "true");
   return (
     <section className=" mt-[15vh] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:justify-self-center">
-      {render.map((producto, key) => (
-        <CardProducts
-          image={producto.image}
-          title={producto.title}
-          price={producto.price}
-          category={producto.category}
-          id={producto.id}
-          key={key}
-          producto={producto}
-        />
-      ))}
+      {render.map((producto, key) =>
+        !producto.create ? (
+          <CardProducts
+            image={producto.image}
+            title={producto.title}
+            price={producto.price}
+            category={producto.category}
+            id={producto.id}
+            key={key}
+            producto={producto}
+          />
+        ) : null
+      )}
       {renderLocalStorage &&
         renderLocalStorage.map((producto, key) => {
           return (

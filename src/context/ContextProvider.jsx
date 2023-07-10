@@ -20,6 +20,7 @@ export default function ContextProvider({ children }) {
   const [switcherBorradoLogico, setSwitcherBorradoLogico] = useState("");
 
   useEffect(() => {
+    const cardLocalStorage = JSON.parse(localStorage.getItem("formData"));
     const array = [];
     fakestoreapi.map((e) => {
       const algo = {
@@ -36,6 +37,10 @@ export default function ContextProvider({ children }) {
       };
       array.push(algo);
     });
+    if (cardLocalStorage) {
+      cardLocalStorage.map((e) => array.push(e));
+      console.log(array);
+    }
     setAllProduct(array);
     setAllProductRender(array);
   }, []);
@@ -82,8 +87,10 @@ export default function ContextProvider({ children }) {
     }
   };
   const handlerCardAddFavoritas = (id) => {
-    console.log(allProduct);
     const cardFound = allProduct.find((item) => item.id === id);
+    console.log(allProductRender);
+    console.log(id);
+    console.log(cardFound);
     if (!cardFavoritas.includes(cardFound)) {
       setCardFavoritas([...cardFavoritas, cardFound]);
       localStorage.setItem(
