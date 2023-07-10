@@ -5,6 +5,7 @@ import { BsTelephone } from "react-icons/bs";
 import { HiShoppingBag, HiHome } from "react-icons/hi";
 import { MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 export default function Navbar() {
   const { allProduct, setAllProductRender, acumulador, handlerMenu } =
     useContext(StoreContext);
@@ -29,6 +30,13 @@ export default function Navbar() {
     ...new Set(allProduct.map((product) => product.category)),
   ];
 
+  const handlerMenuControlado = () => {
+    if (acumulador !== 0) {
+      return handlerMenu();
+    }
+    toast.error("Tu carrito está vacio");
+  };
+
   return (
     <header className="w-full bg-white fixed top-0 z-20 h-[10vh] md:h-[12vh] ">
       <div className="relative w-full flex justify-center items-center h-full gap-6 flex-col">
@@ -50,7 +58,10 @@ export default function Navbar() {
             className="rounded border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none w-[500px] md:order-3 xl:w-[600px] xl:py-3"
           />
           <div className="w-full flex gap-12 items-center justify-around px-4 md:justify-around lg:w-[60%] xl:w-[50%] 2xl:w-[35%] 2xl:gap-24">
-            <div className="flex relative cursor-pointer" onClick={handlerMenu}>
+            <div
+              className="flex relative cursor-pointer"
+              onClick={handlerMenuControlado}
+            >
               <HiShoppingBag
                 size="30"
                 className="cursor-pointer"
