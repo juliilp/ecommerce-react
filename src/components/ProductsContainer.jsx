@@ -11,7 +11,7 @@ export default function ProductsContainer() {
   const renderLocalStorage =
     dataLocalStorage && dataLocalStorage.filter((p) => p.visible === "true");
   return (
-    <section className=" mt-[15vh] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:justify-self-center">
+    <section className="w-full h-full  mt-[15vh] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:px-32">
       {render.map((producto, key) =>
         !producto.create ? (
           <CardProducts
