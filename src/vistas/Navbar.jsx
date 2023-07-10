@@ -7,11 +7,17 @@ import { MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 export default function Navbar() {
-  const { allProduct, setAllProductRender, acumulador, handlerMenu } =
-    useContext(StoreContext);
+  const {
+    allProduct,
+    setAllProductRender,
+    acumulador,
+    handlerMenu,
+    setCardFavoritas,
+    cardFavoritas,
+    cardFavoritasRender,
+  } = useContext(StoreContext);
   const [inputSearch, setInputSearch] = useState("");
-  const [open, setOpen] = useState(false);
-  const handlerMenuMobile = () => setOpen((prev) => !prev);
+  console.log(cardFavoritasRender);
   const handlerInputSearch = (e) => {
     setInputSearch(e.target.value);
     if (e.key === "Enter") {
@@ -19,10 +25,14 @@ export default function Navbar() {
         const filterCard = allProduct.filter((c) =>
           c.title.toLowerCase().includes(inputSearch.toLowerCase())
         );
-
+        const filterCardFavoritas = cardFavoritas.filter((c) =>
+          c.title.toLowerCase().includes(inputSearch.toLowerCase())
+        );
         setAllProductRender(filterCard);
+        setCardFavoritas(filterCardFavoritas);
       } else {
         setAllProductRender(allProduct);
+        setCardFavoritas(cardFavoritasRender);
       }
     }
   };

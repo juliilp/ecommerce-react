@@ -11,6 +11,9 @@ export default function ContextProvider({ children }) {
   const [cardFavoritas, setCardFavoritas] = useState(
     storedCardFavoritas ? JSON.parse(storedCardFavoritas) : []
   );
+  const [cardFavoritasRender, setCardFavoritasRender] = useState(
+    storedCardFavoritas ? JSON.parse(storedCardFavoritas) : []
+  );
   const [openMenu, setOpenMenu] = useState(false);
   const [card, setCard] = useState(agregarCard ? JSON.parse(agregarCard) : []);
   const [acumulador, setAcumulador] = useState(0);
@@ -89,6 +92,7 @@ export default function ContextProvider({ children }) {
 
     if (!cardFavoritas.includes(cardFound)) {
       setCardFavoritas([...cardFavoritas, cardFound]);
+      setCardFavoritasRender([...cardFavoritas, cardFound]);
       localStorage.setItem(
         "cardFavoritas",
         JSON.stringify([...cardFavoritas, cardFound])
@@ -217,6 +221,8 @@ export default function ContextProvider({ children }) {
         switcherBorradoLogico,
         handlerBorradoLogicoLocalStorage,
         handlerAgregarCardDesdeFavoritas,
+        setCardFavoritasRender,
+        cardFavoritasRender,
       }}
     >
       {children}
