@@ -39,9 +39,39 @@ export default function CrearProducto() {
     ...new Set(allProduct.map((product) => product.category)),
   ];
 
+  const ValidacionForm = (form) => {
+    if (
+      !form.image ||
+      !form.description ||
+      !form.price ||
+      !form.title ||
+      !form.category
+    ) {
+      return Swal.fire({
+        title: "Error!",
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
+    }
+  };
   const submitHandler = (e) => {
-    console.log(form);
     e.preventDefault();
+    if (
+      !form.image ||
+      !form.description ||
+      !form.price ||
+      !form.title ||
+      !form.category
+    ) {
+      return Swal.fire({
+        title: "Error!",
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
+    }
+    console.log(form);
     setAllProductRender([...allProductRender, form]);
     setAllProduct([...allProduct, form]);
     const saveToLocalStorage = (data) => {
@@ -71,7 +101,6 @@ export default function CrearProducto() {
     console.log(allProduct);
   };
   const formHandler = (e) => {
-    console.log(e.target.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -82,8 +111,6 @@ export default function CrearProducto() {
         price: parseInt(e.target.value),
       });
     }
-    console.log(e.target.value);
-    console.log(form);
   };
 
   const handleSelect = (e) => {
@@ -93,7 +120,7 @@ export default function CrearProducto() {
       category: e.target.value,
     });
   };
-  console.log(form);
+
   return (
     <section className="w-full  mt-[30vh] flex justify-center items-center flex-col font-poppins gap-8">
       <select className="outline-none " onChange={handleSelect}>
