@@ -9,7 +9,7 @@ export default function Favoritas() {
   return (
     <section className="font-poppins mt-[15vh] ">
       <h1 className="font-semibold text-center text-[20px] mb-12 md:text-[25px] xl:text-[30px]">
-        ¡Bienvenido a tus favoritos!
+        ¡Welcome your favorites!
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {cardFavoritas !== null && cardFavoritas && cardFavoritas.length > 0 ? (
