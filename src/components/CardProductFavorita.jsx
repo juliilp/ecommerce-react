@@ -10,9 +10,8 @@ export default function CardProductFavorita({
   category,
   price,
   title,
-  producto,
 }) {
-  const { handlerAgregarCard, handlerCardRemoveFavoritas } =
+  const { handlerAgregarCardDesdeFavoritas, handlerCardRemoveFavoritas } =
     useContext(StoreContext);
   return (
     <section
@@ -20,22 +19,20 @@ export default function CardProductFavorita({
       key={id}
     >
       <div className=" w-[300px] h-[250px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative transition group lg:w-[350px] lg:h-[350px]">
-        <Link to={`product/${id}`}>
-          <div className="w-full h-full flex items-center justify-center">
-            <img
-              src={image ? image : "nad"}
-              className="max-h-[160px] g  roup-hover:scale-125 duration-300 pointer-events-none "
-              alt="imagen"
-            />
-          </div>
-        </Link>
+        <div className="w-full h-full flex items-center justify-center">
+          <img
+            src={image ? image : "nad"}
+            className="max-h-[160px] g  roup-hover:scale-125 duration-300 pointer-events-none "
+            alt="imagen"
+          />
+        </div>
 
         <div className="flex flex-col justify-around items-center absolute top-4 bg-red-600 py-1 gap-2 w-[50px] h-[100px] opacity-0  -right-10  pointer-events-none  group-hover:pointer-events-auto group-hover:opacity-100 duration-300 group-hover:right-4 z-10 ">
           <BsPlus
             size={30}
             color="white"
             className="cursor-pointer"
-            onClick={() => handlerAgregarCard(producto, id)}
+            onClick={() => handlerAgregarCardDesdeFavoritas(id)}
           />
 
           <button onClick={() => handlerCardRemoveFavoritas(id)}>

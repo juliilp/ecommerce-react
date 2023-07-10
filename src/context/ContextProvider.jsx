@@ -109,6 +109,34 @@ export default function ContextProvider({ children }) {
   const handlerMenu = () => setOpenMenu((val) => !val);
 
   const handlerAgregarCard = (product, id) => {
+    console.log(product);
+    console.log(id);
+    const newItem = { ...product, amount: 1 };
+    const cardItem = card.find((item) => item.id === id);
+
+    if (cardItem) {
+      const newCart = card.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            amount: cardItem.amount + 1,
+          };
+        } else {
+          return item;
+        }
+      });
+      setCard(newCart);
+      localStorage.setItem("agregarcard", JSON.stringify(newCart));
+    } else {
+      const newCart = [...card, { ...newItem }];
+      setCard(newCart);
+      localStorage.setItem("agregarcard", JSON.stringify(newCart));
+    }
+    toast("Agregado al carrito!");
+  };
+
+  const handlerAgregarCardDesdeFavoritas = (id) => {
+    const product = cardFavoritas.find((card) => card.id === id);
     const newItem = { ...product, amount: 1 };
     const cardItem = card.find((item) => item.id === id);
 
@@ -188,6 +216,7 @@ export default function ContextProvider({ children }) {
         borradoLogico,
         switcherBorradoLogico,
         handlerBorradoLogicoLocalStorage,
+        handlerAgregarCardDesdeFavoritas,
       }}
     >
       {children}
