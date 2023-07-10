@@ -126,7 +126,7 @@ export default function Dashboard() {
                         onClick={() => handlerBorradoLogico(c.id)}
                         className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none"
                       >
-                        {valor === "true" ? "Enabled" : "Disabled"}
+                        {valor === "true" ? "Disabled" : "Enabled"}
                       </button>
                     </div>
                   );
@@ -155,7 +155,7 @@ export default function Dashboard() {
                         }
                         className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none"
                       >
-                        {producto.visible === "true" ? "Enabled" : "Disabled"}
+                        {producto.visible === "true" ? "Disabled" : "Enabled"}
                       </button>
                     </section>
                   );

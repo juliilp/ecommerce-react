@@ -21,7 +21,8 @@ export default function ContextProvider({ children }) {
   const [borradoLogico, setBorradoLogico] = useState(true);
   const [refresh, setRefresh] = useState("");
   const [switcherBorradoLogico, setSwitcherBorradoLogico] = useState("");
-
+  const [productosCreados, setProductosCreados] = useState("");
+  const [allProductCreados, setAllProductCreados] = useState("asd");
   useEffect(() => {
     const cardLocalStorage = JSON.parse(localStorage.getItem("formData"));
     const array = [];
@@ -102,7 +103,6 @@ export default function ContextProvider({ children }) {
   };
   const handlerCardRemoveFavoritas = (id) => {
     toast("Sacado de favoritos!");
-    const cardFound = allProduct.find((c) => c.id === id);
     const cardRemove = cardFavoritas.filter((c) => c.id !== id);
 
     const updatedCardFavoritas = cardFavoritas.filter((c) => c.id !== id);
@@ -223,6 +223,10 @@ export default function ContextProvider({ children }) {
         handlerAgregarCardDesdeFavoritas,
         setCardFavoritasRender,
         cardFavoritasRender,
+        setProductosCreados,
+        productosCreados,
+        setAllProductCreados,
+        allProductCreados,
       }}
     >
       {children}

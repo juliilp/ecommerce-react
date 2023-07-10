@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import CardProductFavorita from "../components/CardProductFavorita";
 export default function Favoritas() {
   const { cardFavoritas } = useContext(StoreContext);
-  console.log(cardFavoritas);
   return (
     <section className="font-poppins mt-[15vh] ">
       <h1 className="font-semibold text-center text-[20px] mb-12 md:text-[25px] xl:text-[30px]">

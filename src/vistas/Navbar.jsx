@@ -15,9 +15,11 @@ export default function Navbar() {
     setCardFavoritas,
     cardFavoritas,
     cardFavoritasRender,
+    setProductosCreados,
+    productosCreados,
+    allProductCreados,
   } = useContext(StoreContext);
   const [inputSearch, setInputSearch] = useState("");
-  console.log(cardFavoritasRender);
   const handlerInputSearch = (e) => {
     setInputSearch(e.target.value);
     if (e.key === "Enter") {
@@ -28,11 +30,16 @@ export default function Navbar() {
         const filterCardFavoritas = cardFavoritas.filter((c) =>
           c.title.toLowerCase().includes(inputSearch.toLowerCase())
         );
+        const filterCardCreadas = productosCreados.filter((c) =>
+          c.title.toLowerCase().includes(inputSearch.toLowerCase())
+        );
         setAllProductRender(filterCard);
         setCardFavoritas(filterCardFavoritas);
+        setProductosCreados(filterCardCreadas);
       } else {
         setAllProductRender(allProduct);
         setCardFavoritas(cardFavoritasRender);
+        setProductosCreados(allProductCreados);
       }
     }
   };
