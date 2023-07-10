@@ -41,7 +41,7 @@ export default function CardProducts({
             className="cursor-pointer"
             onClick={() => handlerAgregarCard(producto, id)}
           />
-          {cardFavoritas.includes(producto) ? (
+          {cardFavoritas.find((c) => c.id === id) ? (
             <button onClick={() => handlerCardRemoveFavoritas(id)}>
               <AiTwotoneHeart color="white" />
             </button>

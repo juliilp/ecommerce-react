@@ -39,7 +39,6 @@ export default function ContextProvider({ children }) {
     });
     if (cardLocalStorage) {
       cardLocalStorage.map((e) => array.push(e));
-      console.log(array);
     }
     setAllProduct(array);
     setAllProductRender(array);
@@ -73,7 +72,6 @@ export default function ContextProvider({ children }) {
       localStorage.setItem(findProduct.title, "false");
       setRefresh(Math.random);
     }
-    console.log(valor);
   };
 
   const handlerBorradoLogicoLocalStorage = (id) => {
@@ -88,9 +86,7 @@ export default function ContextProvider({ children }) {
   };
   const handlerCardAddFavoritas = (id) => {
     const cardFound = allProduct.find((item) => item.id === id);
-    console.log(allProductRender);
-    console.log(id);
-    console.log(cardFound);
+
     if (!cardFavoritas.includes(cardFound)) {
       setCardFavoritas([...cardFavoritas, cardFound]);
       localStorage.setItem(
@@ -103,13 +99,11 @@ export default function ContextProvider({ children }) {
   const handlerCardRemoveFavoritas = (id) => {
     toast("Sacado de favoritos!");
     const cardFound = allProduct.find((c) => c.id === id);
-    console.log(cardFound);
     const cardRemove = cardFavoritas.filter((c) => c.id !== id);
 
     const updatedCardFavoritas = cardFavoritas.filter((c) => c.id !== id);
     localStorage.setItem("cardFavoritas", JSON.stringify(updatedCardFavoritas));
     setCardFavoritas(cardRemove);
-    console.log("remove");
   };
   // Este handlerMenu es para la Sidebar/barra lateral del home se abra y cierra
   const handlerMenu = () => setOpenMenu((val) => !val);
