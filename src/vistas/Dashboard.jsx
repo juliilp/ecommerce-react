@@ -51,7 +51,7 @@ export default function Dashboard() {
   return (
     <>
       {steps === 1 && (
-        <section className="w-full h-full flex justify-center items-center font-poppins">
+        <section className="w-full h-full flex justify-center items-center font-poppins mt-[15vh]">
           <form
             className=" flex flex-col justify-center w-[300px] h-[400px] gap-6 mt-6"
             onSubmit={handlerSubmit}

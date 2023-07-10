@@ -50,7 +50,6 @@ export default function Navbar() {
             className="rounded border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none w-[500px] md:order-3 xl:w-[600px] xl:py-3"
           />
           <div className="w-full flex gap-12 items-center justify-around px-4 md:justify-around lg:w-[60%] xl:w-[50%] 2xl:w-[35%] 2xl:gap-24">
-            <Link to="/dashboard">Dashboard</Link>
             <div className="flex relative cursor-pointer" onClick={handlerMenu}>
               <HiShoppingBag
                 size="30"
