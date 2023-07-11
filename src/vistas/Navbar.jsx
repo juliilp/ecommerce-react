@@ -66,59 +66,57 @@ export default function Navbar() {
   };
   return (
     <motion.header
-      className="w-full bg-white fixed top-0 z-20 h-[10vh] md:h-[12vh] "
+      className="w-full bg-white fixed top-0 z-20 h-[15vh] flex items-center md:flex-col md:h-[12vh] "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, delay: 0.25 }}
     >
-      <div className="relative w-full h-[12vh] flex justify-center items-center gap-6 flex-col">
-        {/* Esto es la navbar superior que solo aparece en 768px */}
-        <div className=" hidden w-full md:flex justify-between items-center bg-[#ff8811] text-white px-6">
-          <div className="flex items-center">
-            <BsTelephone />
-            <span>+54 11 5264-9628</span>
-          </div>
-          <span>Get 50% Off on Selected Items | Shop now</span>
-          <span>Shopcart - E-commerce</span>
+      {/* Esto es la navbar superior que solo aparece en 768px */}
+      <div className=" hidden w-full md:flex justify-between items-center bg-[#ff8811] text-white px-6">
+        <div className="flex items-center">
+          <BsTelephone />
+          <span>+54 11 5264-9628</span>
         </div>
+        <span>Get 50% Off on Selected Items | Shop now</span>
+        <span>Shopcart - E-commerce</span>
+      </div>
 
-        <div className=" w-full  h-[7vh] items-center flex flex-col gap-1 md:flex-row md:px-12  md:justify-center 2xl:gap-24  ">
-          <input
-            type="text"
-            onKeyDown={handlerInputSearch}
-            placeholder="Find your product.."
-            className="rounded w-[350px] border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none md:w-[500px] md:order-3 xl:w-[600px] xl:py-3"
-          />
-          <div className="w-full flex gap-12 items-center justify-around px-4 md:justify-around lg:w-[60%] xl:w-[50%] 2xl:w-[35%] 2xl:gap-24">
-            <div
-              className="flex relative cursor-pointer"
-              onClick={handlerMenuControlado}
-            >
-              <HiShoppingBag
-                size="30"
-                className="cursor-pointer"
-                color="#909090"
-              />
-              <span className="absolute top-0 right-0 text-lg font-semibold z-20 ">
-                {acumulador}
-              </span>
-            </div>
-            <Link to="/dashboard" className="flex items-center justify-center">
-              <MdAdminPanelSettings size={30} />
-              <p className="font-semibold hidden md:block">Admin</p>
-            </Link>
-            <Link to="/">
-              <div className="flex items-center">
-                <HiHome size={30} className="cursor-pointer" />
-                <span className="font-semibold">Home</span>
-              </div>
-            </Link>
+      <div className=" w-full md:h-full  items-center flex flex-col gap-1 md:flex-row md:px-12  md:justify-center 2xl:gap-24  ">
+        <input
+          type="text"
+          onKeyDown={handlerInputSearch}
+          placeholder="Find your product.."
+          className="rounded w-[350px] border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none md:w-[500px] md:order-3 xl:w-[600px] xl:py-3"
+        />
+        <div className="w-full flex gap-12 items-center justify-around px-4 md:justify-around lg:w-[60%] xl:w-[50%] 2xl:w-[35%] 2xl:gap-24">
+          <div
+            className="flex relative cursor-pointer"
+            onClick={handlerMenuControlado}
+          >
+            <HiShoppingBag
+              size="30"
+              className="cursor-pointer"
+              color="#909090"
+            />
+            <span className="absolute top-0 right-0 text-lg font-semibold z-20 ">
+              {acumulador}
+            </span>
+          </div>
+          <Link to="/dashboard" className="flex items-center justify-center">
+            <MdAdminPanelSettings size={30} />
+            <p className="font-semibold hidden md:block">Admin</p>
+          </Link>
+          <Link to="/">
             <div className="flex items-center">
-              <MdFavorite color="red" size={30} />
-              <Link to="favoritos">
-                <span className="cursor-pointer font-semibold ">Favorites</span>
-              </Link>
+              <HiHome size={30} className="cursor-pointer" />
+              <span className="font-semibold">Home</span>
             </div>
+          </Link>
+          <div className="flex items-center">
+            <MdFavorite color="red" size={30} />
+            <Link to="favoritos">
+              <span className="cursor-pointer font-semibold ">Favorites</span>
+            </Link>
           </div>
         </div>
       </div>

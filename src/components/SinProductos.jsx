@@ -19,7 +19,7 @@ export default function SinProductos() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              ¡Ningún producto coincide con el nombre de tu búsqueda!
+              No products match the name you entered
             </motion.p>
           )}
       </AnimatePresence>

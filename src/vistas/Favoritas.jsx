@@ -16,7 +16,7 @@ export default function Favoritas() {
       transition={{ duration: 0.7, delay: 0.25 }}
     >
       <h1 className="font-bold text-center text-5xl mb-12 md:text-[25px] xl:text-[30px]">
-        ¡Welcome your favorites!
+        ¡Welcome to your favorites!
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
