@@ -37,7 +37,9 @@ export default function Favoritas() {
       </div>
       {cardFavoritas.length === 0 && (
         <div className="w-full h-full flex justify-center items-center ">
-          <p className="text-2xl font-medium">¡No tenes card!</p>
+          <p className="text-2xl font-medium">
+            You don't have any products in favorites
+          </p>
         </div>
       )}
       <Toaster

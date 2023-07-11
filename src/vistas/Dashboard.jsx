@@ -64,6 +64,10 @@ export default function Dashboard() {
             className=" flex flex-col justify-center w-[300px] h-[400px] gap-6 mt-6"
             onSubmit={handlerSubmit}
           >
+            <div>
+              <p>user: admin</p>
+              <p>password: admin</p>
+            </div>
             <div className="flex flex-col">
               <span>User</span>
               <input
