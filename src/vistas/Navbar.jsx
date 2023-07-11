@@ -6,6 +6,7 @@ import { HiShoppingBag, HiHome } from "react-icons/hi";
 import { MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { MdAdminPanelSettings } from "react-icons/md";
 export default function Navbar() {
   const {
     allProduct,
@@ -80,7 +81,7 @@ export default function Navbar() {
             type="text"
             onKeyDown={handlerInputSearch}
             placeholder="Find your product.."
-            className="rounded border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none w-[500px] md:order-3 xl:w-[600px] xl:py-3"
+            className="rounded w-[350px] border-gray-200 bg-gray-100 p-2 pr-32 text-sm font-medium focus:ring-0 outline-none md:w-[500px] md:order-3 xl:w-[600px] xl:py-3"
           />
           <div className="w-full flex gap-12 items-center justify-around px-4 md:justify-around lg:w-[60%] xl:w-[50%] 2xl:w-[35%] 2xl:gap-24">
             <div
@@ -96,6 +97,10 @@ export default function Navbar() {
                 {acumulador}
               </span>
             </div>
+            <Link to="/dashboard" className="flex items-center justify-center">
+              <MdAdminPanelSettings size={30} />
+              <p className="font-semibold hidden md:block">Admin</p>
+            </Link>
             <Link to="/">
               <div className="flex items-center">
                 <HiHome size={30} className="cursor-pointer" />

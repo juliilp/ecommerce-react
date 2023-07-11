@@ -30,7 +30,7 @@ export default function Favoritas() {
       </div>
       {cardFavoritas.length === 0 && (
         <div className="w-full h-full flex justify-center items-center ">
-          <p className="text-2xl font-medium">¡No tenes card favoritas!</p>
+          <p className="text-2xl font-medium">¡No tenes card!</p>
         </div>
       )}
     </section>
