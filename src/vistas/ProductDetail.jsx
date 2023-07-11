@@ -1,8 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../context/ContextProvider";
-import axios from "axios";
-import { IoMdAdd, IoMdRemove } from "react-icons/Io";
+import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { FaTruck, FaMotorcycle } from "react-icons/fa";
 export default function ProductDetail() {
   const { allProductRender, card, setCard } = useContext(StoreContext);
