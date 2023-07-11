@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { StoreContext } from "../context/ContextProvider";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { FaTruck, FaMotorcycle } from "react-icons/fa";
+import { Toaster } from "react-hot-toast";
 export default function ProductDetail() {
   const { allProductRender, card, setCard } = useContext(StoreContext);
   const { id } = useParams();
@@ -152,6 +153,28 @@ export default function ProductDetail() {
       ) : (
         <p>Loading...</p>
       )}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          className: "",
+          duration: 2500,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "orange",
+              secondary: "black",
+            },
+          },
+        }}
+      />
     </section>
   );
 }

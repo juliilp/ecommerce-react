@@ -65,7 +65,7 @@ export default function CardProducts({
         <span className="text-lg lg:text-xl">${price}</span>
       </div>
       <Toaster
-        position="top-left"
+        position="top-center"
         reverseOrder={false}
         gutter={8}
         containerClassName=""
@@ -73,13 +73,13 @@ export default function CardProducts({
         toastOptions={{
           // Define default options
           className: "",
-          duration: 5000,
+          duration: 2500,
           style: {
             background: "#363636",
             color: "#fff",
           },
           success: {
-            duration: 3000,
+            duration: 2500,
             theme: {
               primary: "green",
               secondary: "black",

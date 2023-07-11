@@ -53,15 +53,14 @@ export default function CardProductFavorita({
         <span className="text-lg lg:text-xl">${price}</span>
       </div>
       <Toaster
-        position="top-left"
+        position="top-right"
         reverseOrder={false}
         gutter={8}
         containerClassName=""
         containerStyle={{}}
         toastOptions={{
-          // Define default options
           className: "",
-          duration: 5000,
+          duration: 2500,
           style: {
             background: "#363636",
             color: "#fff",
@@ -69,7 +68,7 @@ export default function CardProductFavorita({
           success: {
             duration: 3000,
             theme: {
-              primary: "green",
+              primary: "orange",
               secondary: "black",
             },
           },

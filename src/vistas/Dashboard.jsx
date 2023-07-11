@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Toaster } from "react-hot-toast";
 export default function Dashboard() {
   const {
     allProductRender,
@@ -173,6 +174,28 @@ export default function Dashboard() {
                 </div>
               )}
           </div>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+            gutter={8}
+            containerClassName=""
+            containerStyle={{}}
+            toastOptions={{
+              className: "",
+              duration: 2500,
+              style: {
+                background: "#363636",
+                color: "#fff",
+              },
+              success: {
+                duration: 3000,
+                theme: {
+                  primary: "orange",
+                  secondary: "black",
+                },
+              },
+            }}
+          />
         </section>
       )}
     </>
