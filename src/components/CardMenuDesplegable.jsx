@@ -1,4 +1,4 @@
-import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/Io";
+import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 import { useContext } from "react";
 import { StoreContext } from "../context/ContextProvider";
 export default function CardMenuDesplegable({
