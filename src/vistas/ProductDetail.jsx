@@ -154,7 +154,7 @@ export default function ProductDetail() {
         <p>Loading...</p>
       )}
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
         gutter={8}
         containerClassName=""

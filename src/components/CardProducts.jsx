@@ -65,7 +65,7 @@ export default function CardProducts({
         <span className="text-lg lg:text-xl">${price}</span>
       </div>
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
         gutter={8}
         containerClassName=""
