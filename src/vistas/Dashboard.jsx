@@ -31,7 +31,10 @@ export default function Dashboard() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if (user.nombre === "admin" && user.contraseña === "admin") {
+    if (
+      user.nombre === process.env.REACT_APP_USER &&
+      user.contraseña === process.env.REACT_APP_PASS
+    ) {
       setError("");
       setSteps(2);
       localStorage.setItem("userAdmin", 2);
