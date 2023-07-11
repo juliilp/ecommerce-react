@@ -4,6 +4,7 @@ import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Toaster } from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
 export default function Dashboard() {
   const {
     allProductRender,
@@ -53,7 +54,12 @@ export default function Dashboard() {
   return (
     <>
       {steps === 1 && (
-        <section className="w-full h-full flex justify-center items-center font-poppins mt-[15vh]">
+        <motion.section
+          className="w-full h-full flex justify-center items-center font-poppins mt-[15vh]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 0.7 }}
+        >
           <form
             className=" flex flex-col justify-center w-[300px] h-[400px] gap-6 mt-6"
             onSubmit={handlerSubmit}
@@ -83,10 +89,15 @@ export default function Dashboard() {
             </button>
             {error && <p>{error}</p>}
           </form>
-        </section>
+        </motion.section>
       )}
       {steps === 2 && (
-        <section className="w-full mt-[15vh]">
+        <motion.section
+          className="w-full mt-[15vh]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+        >
           <div className="flex flex-col items-center w-full gap-4 justify-around md:flex-row md:gap-0">
             <Link to="/crearproducto">
               <button className="h-[40px] w-[150px] rounded-xl bg-[#E4B363] text-white font-semibold text-center border-none">
@@ -163,16 +174,23 @@ export default function Dashboard() {
                   );
                 })}
             </div>
-            {productosCreados &&
-              productosCreados.length === 0 &&
-              allProductRender &&
-              allProductRender.length === 0 && (
-                <div className="flex w-full items-center justify-center mt-10">
-                  <p className="text-2xl font-semibold">
-                    ¡Ningún producto coincide con el nombre de tu búsqueda!
-                  </p>
-                </div>
-              )}
+            <AnimatePresence>
+              {productosCreados &&
+                productosCreados.length === 0 &&
+                allProductRender &&
+                allProductRender.length === 0 && (
+                  <div className="flex w-full items-center justify-center mt-10">
+                    <motion.p
+                      className="text-2xl font-semibold"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      ¡Ningún producto coincide con el nombre de tu búsqueda!
+                    </motion.p>
+                  </div>
+                )}
+            </AnimatePresence>
           </div>
           <Toaster
             position="top-right"
@@ -196,7 +214,7 @@ export default function Dashboard() {
               },
             }}
           />
-        </section>
+        </motion.section>
       )}
     </>
   );

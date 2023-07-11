@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/ContextProvider";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 export default function CrearProducto() {
   const navigate = useNavigate();
   const { allProduct, allProductRender, setAllProductRender, setAllProduct } =
@@ -122,7 +123,11 @@ export default function CrearProducto() {
   };
 
   return (
-    <section className="w-full  mt-[30vh] flex justify-center items-center flex-col font-poppins gap-8">
+    <motion.section
+      className="w-full  mt-[30vh] flex justify-center items-center flex-col font-poppins gap-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <select className="outline-none " onChange={handleSelect}>
         <option>Categories</option>
         {uniqueCategories.map((producto, index) => (
@@ -183,6 +188,6 @@ export default function CrearProducto() {
           Send data
         </button>
       </form>
-    </section>
+    </motion.section>
   );
 }

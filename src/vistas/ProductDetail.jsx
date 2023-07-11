@@ -4,6 +4,7 @@ import { StoreContext } from "../context/ContextProvider";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { FaTruck, FaMotorcycle } from "react-icons/fa";
 import { Toaster } from "react-hot-toast";
+import { motion } from "framer-motion";
 export default function ProductDetail() {
   const { allProductRender, card, setCard } = useContext(StoreContext);
   const { id } = useParams();
@@ -64,7 +65,12 @@ export default function ProductDetail() {
   };
 
   return (
-    <section className="flex w-full flex-col mt-[15vh] md:flex-row justify-center items-center  px-10 mb-24 md:mt-[10vh] md:px-0 md:gap-20 font-poppins xl:gap-40">
+    <motion.section
+      className="flex w-full flex-col mt-[15vh] md:flex-row justify-center items-center  px-10 mb-24 md:mt-[10vh] md:px-0 md:gap-20 font-poppins xl:gap-40"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.7, delay: 0.25 }}
+    >
       {product ? (
         <>
           <div className="mt-[5vh] border border- p-8 flex justify-center items-center  ">
@@ -175,6 +181,6 @@ export default function ProductDetail() {
           },
         }}
       />
-    </section>
+    </motion.section>
   );
 }

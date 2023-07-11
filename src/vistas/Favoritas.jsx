@@ -4,11 +4,17 @@ import { StoreContext } from "../context/ContextProvider";
 import { Link } from "react-router-dom";
 import CardProductFavorita from "../components/CardProductFavorita";
 import { Toaster } from "react-hot-toast";
+import { motion } from "framer-motion";
 export default function Favoritas() {
   const { cardFavoritas } = useContext(StoreContext);
   console.log(cardFavoritas);
   return (
-    <section className="font-poppins mt-[15vh] ">
+    <motion.section
+      className="font-poppins mt-[15vh]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.7, delay: 0.25 }}
+    >
       <h1 className="font-bold text-center text-5xl mb-12 md:text-[25px] xl:text-[30px]">
         ¡Welcome your favorites!
       </h1>
@@ -56,6 +62,6 @@ export default function Favoritas() {
           },
         }}
       />
-    </section>
+    </motion.section>
   );
 }

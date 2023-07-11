@@ -7,6 +7,7 @@ import { MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { motion } from "framer-motion";
 export default function Navbar() {
   const {
     allProduct,
@@ -64,10 +65,15 @@ export default function Navbar() {
     toast.error("Tu carrito está vacio");
   };
   return (
-    <header className="w-full bg-white fixed top-0 z-20 h-[10vh] md:h-[12vh] ">
-      <div className="relative w-full flex justify-center items-center h-full gap-6 flex-col">
+    <motion.header
+      className="w-full bg-white fixed top-0 z-20 h-[10vh] md:h-[12vh] "
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.7, delay: 0.25 }}
+    >
+      <div className="relative w-full h-[12vh] flex justify-center items-center gap-6 flex-col">
         {/* Esto es la navbar superior que solo aparece en 768px */}
-        <div className=" hidden w-full md:flex justify-between items-center bg-[#ff8811] h-[5vh] text-white px-6">
+        <div className=" hidden w-full md:flex justify-between items-center bg-[#ff8811] text-white px-6">
           <div className="flex items-center">
             <BsTelephone />
             <span>+54 11 5264-9628</span>
@@ -116,6 +122,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
