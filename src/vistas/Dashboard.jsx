@@ -31,10 +31,7 @@ export default function Dashboard() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if (
-      user.nombre === process.env.REACT_APP_USER &&
-      user.contraseña === process.env.REACT_APP_PASS
-    ) {
+    if (user.nombre === "admin" && user.contraseña === "admin") {
       setError("");
       setSteps(2);
       localStorage.setItem("userAdmin", 2);
@@ -52,8 +49,6 @@ export default function Dashboard() {
     localStorage.removeItem("userAdmin");
   };
   const ItemLocalStorage = JSON.parse(localStorage.getItem("formData"));
-  console.log(ItemLocalStorage);
-  console.log(allProductRender);
   return (
     <>
       {steps === 1 && (
