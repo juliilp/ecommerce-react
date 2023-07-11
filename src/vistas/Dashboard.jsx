@@ -133,8 +133,8 @@ export default function Dashboard() {
                   );
                 }
               })}
-              {productosCreados &&
-                productosCreados.map((producto) => {
+              {ItemLocalStorage &&
+                ItemLocalStorage.map((producto) => {
                   return (
                     <section
                       key={producto.id}
