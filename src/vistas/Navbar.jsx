@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { BsTelephone } from "react-icons/bs";
@@ -21,6 +21,7 @@ export default function Navbar() {
   } = useContext(StoreContext);
   const [inputSearch, setInputSearch] = useState("");
   const handlerInputSearch = (e) => {
+    const ItemLocalStorage = JSON.parse(localStorage.getItem("formData"));
     setInputSearch(e.target.value);
     if (e.key === "Enter") {
       if (inputSearch.length > 0) {
@@ -30,19 +31,27 @@ export default function Navbar() {
         const filterCardFavoritas = cardFavoritas.filter((c) =>
           c.title.toLowerCase().includes(inputSearch.toLowerCase())
         );
-        const filterCardCreadas = productosCreados.filter((c) =>
-          c.title.toLowerCase().includes(inputSearch.toLowerCase())
-        );
+
+        if (ItemLocalStorage) {
+          console.log("algo");
+          const filterCardCreadas =
+            ItemLocalStorage &&
+            ItemLocalStorage.filter((c) =>
+              c.title.toLowerCase().includes(inputSearch.toLowerCase())
+            );
+          setProductosCreados(filterCardCreadas);
+        }
+
         setAllProductRender(filterCard);
         setCardFavoritas(filterCardFavoritas);
-        setProductosCreados(filterCardCreadas);
       } else {
         setAllProductRender(allProduct);
         setCardFavoritas(cardFavoritasRender);
-        setProductosCreados(allProductCreados);
+        setProductosCreados(ItemLocalStorage);
       }
     }
   };
+
   const uniqueCategories = [
     ...new Set(allProduct.map((product) => product.category)),
   ];
@@ -53,7 +62,6 @@ export default function Navbar() {
     }
     toast.error("Tu carrito está vacio");
   };
-
   return (
     <header className="w-full bg-white fixed top-0 z-20 h-[10vh] md:h-[12vh] ">
       <div className="relative w-full flex justify-center items-center h-full gap-6 flex-col">

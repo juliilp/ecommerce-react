@@ -8,6 +8,7 @@ export default function Dashboard() {
     allProductRender,
     handlerBorradoLogico,
     handlerBorradoLogicoLocalStorage,
+    productosCreados,
   } = useContext(StoreContext);
   const [steps, setSteps] = useState(1);
   const [error, setError] = useState("");
@@ -48,6 +49,8 @@ export default function Dashboard() {
     localStorage.removeItem("userAdmin");
   };
   const ItemLocalStorage = JSON.parse(localStorage.getItem("formData"));
+  console.log(ItemLocalStorage);
+  console.log(allProductRender);
   return (
     <>
       {steps === 1 && (
@@ -98,7 +101,7 @@ export default function Dashboard() {
               Disconnect
             </button>
           </div>
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mt-4">
               {allProductRender.map((c) => {
                 if (!c.create) {
@@ -132,8 +135,8 @@ export default function Dashboard() {
                   );
                 }
               })}
-              {ItemLocalStorage &&
-                ItemLocalStorage.map((producto) => {
+              {productosCreados &&
+                productosCreados.map((producto) => {
                   return (
                     <section
                       key={producto.id}
@@ -161,6 +164,16 @@ export default function Dashboard() {
                   );
                 })}
             </div>
+            {productosCreados &&
+              productosCreados.length === 0 &&
+              allProductRender &&
+              allProductRender.length === 0 && (
+                <div className="flex w-full items-center justify-center mt-10">
+                  <p className="text-2xl font-semibold">
+                    ¡Ningún producto coincide con el nombre de tu búsqueda!
+                  </p>
+                </div>
+              )}
           </div>
         </section>
       )}

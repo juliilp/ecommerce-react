@@ -8,14 +8,15 @@ export default function ProductsContainer() {
     productosCreados,
     setProductosCreados,
     setAllProductCreados,
-    allProductCreados,
   } = useContext(StoreContext);
 
   // Si no anda, le tengo que poner el true en string o booleano
   let render = allProductRender.filter((p) => p.visible === "true");
   const dataLocalStorage = JSON.parse(localStorage.getItem("formData"));
   const renderLocalStorage =
-    dataLocalStorage && dataLocalStorage.filter((p) => p.visible === "true");
+    (dataLocalStorage &&
+      dataLocalStorage.filter((p) => p.visible === "true")) ||
+    [];
   const validacionProductos = [];
 
   useEffect(() => {
@@ -54,9 +55,6 @@ export default function ProductsContainer() {
             />
           );
         })}
-      {productosCreados.length === 0 && productosCreados.length === 0 && (
-        <p>Estoy vacio</p>
-      )}
     </section>
   );
 }

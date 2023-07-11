@@ -22,7 +22,7 @@ export default function ContextProvider({ children }) {
   const [refresh, setRefresh] = useState("");
   const [switcherBorradoLogico, setSwitcherBorradoLogico] = useState("");
   const [productosCreados, setProductosCreados] = useState("");
-  const [allProductCreados, setAllProductCreados] = useState("asd");
+  const [allProductCreados, setAllProductCreados] = useState();
   useEffect(() => {
     const cardLocalStorage = JSON.parse(localStorage.getItem("formData"));
     const array = [];
