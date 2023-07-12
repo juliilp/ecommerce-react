@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { StoreContext } from "../context/ContextProvider";
 import { BsPlus } from "react-icons/bs";
 import { Toaster } from "react-hot-toast";
 import { AiTwotoneHeart, AiOutlineHeart } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 export default function CardProducts({
   image,
   id,
@@ -27,14 +27,20 @@ export default function CardProducts({
       opacity: 1,
     },
   };
+  const ref = useRef();
+  const view = useInView(ref, { once: true });
+  useEffect(() => {
+    console.log(view);
+  }, [view]);
   return (
     <motion.section
+      ref={ref}
       variants={options}
       className=" h-full flex flex-col justify-center items-center mt my-16 overflow-hidden  "
       key={id}
       initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.7, delay: 0.25 }}
+      animate={view ? "visible" : "hidden"}
+      transition={{ duration: 1, delay: 0.5 }}
     >
       <div className=" w-[300px] h-[250px] flex justify-center items-center  border border-[#e4e4e4] mb-4 relative transition group overflow-hidden ">
         <Link to={`product/${id}`}>
